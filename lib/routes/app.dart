@@ -1,11 +1,14 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_application_1/feature/auth/presentation/login_screen.dart';
 import 'package:flutter_application_1/feature/dashboard/presentation/dash_navigation_screen.dart';
 import 'package:flutter_application_1/feature/dashboard/presentation/dash_rom_screen.dart';
 import 'package:flutter_application_1/feature/dashboard/presentation/dashboard_screen.dart';
-import 'package:flutter_application_1/feature/romaneio/presentation/romaneio_screen.dart';
-import 'package:flutter_application_1/shared/presentation/guards/auth_guard.dart';
-import 'package:flutter_application_1/shared/presentation/main_layout.dart';
+import 'package:flutter_application_1/feature/romaneio/presentation/screen/romaneio_detail_screen.dart';
+import 'package:flutter_application_1/feature/romaneio/presentation/screen/romaneio_list_screen.dart';
+import 'package:flutter_application_1/feature/romaneio/presentation/screen/romaneio_nav_screen.dart';
+import 'package:flutter_application_1/shared/domain/models/doc.dart';
+import 'package:flutter_application_1/shared/presentation/layout/main_layout.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 part 'app.gr.dart';
@@ -40,7 +43,14 @@ class AppRouter extends RootStackRouter {
             AutoRoute(path: "rom", page: DashRomRoute.page),
           ],
         ),
-        AutoRoute(path: "romaneio", page: RomaneioRoute.page),
+        AutoRoute(
+          path: "romaneio",
+          page: RomaneioNavigationRoute.page,
+          children: [
+            AutoRoute(path: "", page: RomaneioListRoute.page, initial: true),
+            AutoRoute(path: "detail", page: RomaneioDetailRoute.page),
+          ],
+        ),
       ],
     ),
   ];

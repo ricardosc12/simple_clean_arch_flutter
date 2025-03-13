@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_application_1/routes/app.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
+  debugRepaintRainbowEnabled = true;
   runApp(ProviderScope(child: MyApp()));
 }
 

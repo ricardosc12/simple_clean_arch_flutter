@@ -91,17 +91,70 @@ class MainLayoutRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [RomaneioScreen]
-class RomaneioRoute extends PageRouteInfo<void> {
-  const RomaneioRoute({List<PageRouteInfo>? children})
-    : super(RomaneioRoute.name, initialChildren: children);
+/// [RomaneioDetailScreen]
+class RomaneioDetailRoute extends PageRouteInfo<RomaneioDetailRouteArgs> {
+  RomaneioDetailRoute({
+    Key? key,
+    required Doc doc,
+    List<PageRouteInfo>? children,
+  }) : super(
+         RomaneioDetailRoute.name,
+         args: RomaneioDetailRouteArgs(key: key, doc: doc),
+         initialChildren: children,
+       );
 
-  static const String name = 'RomaneioRoute';
+  static const String name = 'RomaneioDetailRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const RomaneioScreen();
+      final args = data.argsAs<RomaneioDetailRouteArgs>();
+      return RomaneioDetailScreen(key: args.key, doc: args.doc);
+    },
+  );
+}
+
+class RomaneioDetailRouteArgs {
+  const RomaneioDetailRouteArgs({this.key, required this.doc});
+
+  final Key? key;
+
+  final Doc doc;
+
+  @override
+  String toString() {
+    return 'RomaneioDetailRouteArgs{key: $key, doc: $doc}';
+  }
+}
+
+/// generated route for
+/// [RomaneioListScreen]
+class RomaneioListRoute extends PageRouteInfo<void> {
+  const RomaneioListRoute({List<PageRouteInfo>? children})
+    : super(RomaneioListRoute.name, initialChildren: children);
+
+  static const String name = 'RomaneioListRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const RomaneioListScreen();
+    },
+  );
+}
+
+/// generated route for
+/// [RomaneioNavigationScreen]
+class RomaneioNavigationRoute extends PageRouteInfo<void> {
+  const RomaneioNavigationRoute({List<PageRouteInfo>? children})
+    : super(RomaneioNavigationRoute.name, initialChildren: children);
+
+  static const String name = 'RomaneioNavigationRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const RomaneioNavigationScreen();
     },
   );
 }
