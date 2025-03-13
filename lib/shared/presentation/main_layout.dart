@@ -1,0 +1,60 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/routes/app.dart';
+import 'package:flutter_application_1/shared/presentation/guards/user_header.dart';
+
+@RoutePage()
+class MainLayoutPage extends StatelessWidget {
+  const MainLayoutPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return AutoTabsRouter(
+      routes: const [DashboardRoute(), RomaneioRoute()],
+      transitionBuilder:
+          (context, child, animation) =>
+              FadeTransition(opacity: animation, child: child),
+      builder: (context, child) {
+        final tabsRouter = AutoTabsRouter.of(context);
+
+        return Scaffold(
+          body: Expanded(child: child),
+          // body: Column(
+          //   children: [
+          //     Container(
+          //       decoration: BoxDecoration(color: const Color(0xFFFF7418)),
+          //       child: Padding(
+          //         padding: EdgeInsets.only(left: 10, right: 10),
+          //         child: Row(
+          //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //           children: [
+          //             Image.asset("logo.png", width: 150, height: 50),
+          //             UserHeader(),
+          //           ],
+          //         ),
+          //       ),
+          //     ),
+          //     Expanded(child: child),
+          //   ],
+          // ),
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: tabsRouter.activeIndex,
+            onTap: (index) {
+              tabsRouter.setActiveIndex(index);
+            },
+            items: [
+              BottomNavigationBarItem(
+                label: "Dashboard",
+                icon: const Icon(Icons.auto_graph_sharp),
+              ),
+              BottomNavigationBarItem(
+                label: "Romaneio",
+                icon: const Icon(Icons.fire_truck),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+}

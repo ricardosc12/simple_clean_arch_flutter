@@ -1,0 +1,6 @@
+{
+  "files.exclude": {
+    "**/*.freezed.*": true,
+    "**/*.g.*": true,
+  }
+}
