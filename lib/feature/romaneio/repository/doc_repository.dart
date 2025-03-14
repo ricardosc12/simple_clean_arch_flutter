@@ -9,7 +9,9 @@ abstract class DocRepository {
 
 class DocRepositoryLocalImpl implements DocRepository {
   @override
-  Future<Result<List<Doc>, Exception>> getDocs() {
+  Future<Result<List<Doc>, Exception>> getDocs() async {
+
+    await Future.delayed(Duration(milliseconds: 1000));
     final romTipos = RomaneioTipo.values;
     final docStatus = DocStatus.values;
 
@@ -18,8 +20,8 @@ class DocRepositoryLocalImpl implements DocRepository {
     List<Romaneio> romaneios = List.generate(
       15,
       (_) => Romaneio(
-        cod: faker.randomGenerator.fromCharSet("1234567890",8),
-        numero: faker.randomGenerator.fromCharSet("1234567890",8),
+        cod: faker.randomGenerator.fromCharSet("1234567890", 8),
+        numero: faker.randomGenerator.fromCharSet("1234567890", 8),
         grupoEmp: faker.randomGenerator.element(["JC", "JR"]),
         tipo: romTipos[faker.randomGenerator.integer(romTipos.length)],
       ),
@@ -30,10 +32,10 @@ class DocRepositoryLocalImpl implements DocRepository {
     for (var i = 0; i < 50; i++) {
       docs.add(
         Doc(
-          ar: faker.randomGenerator.fromCharSet("1234567890",15),
-          chave: faker.randomGenerator.fromCharSet("1234567890",15),
+          ar: faker.randomGenerator.fromCharSet("1234567890", 15),
+          chave: faker.randomGenerator.fromCharSet("1234567890", 15),
           destinatario: faker.randomGenerator.element(remetentes),
-          numero: faker.randomGenerator.fromCharSet("1234567890",8),
+          numero: faker.randomGenerator.fromCharSet("1234567890", 8),
           remetente: faker.randomGenerator.element(destinatarios),
           status: docStatus[faker.randomGenerator.integer(docStatus.length)],
           romaneio: faker.randomGenerator.element(romaneios),

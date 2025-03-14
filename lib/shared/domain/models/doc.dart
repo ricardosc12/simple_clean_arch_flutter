@@ -1,33 +1,37 @@
 import 'package:flutter_application_1/shared/domain/models/romaneio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'doc.freezed.dart';
 part 'doc.g.dart';
 
-enum DocStatus { app, coleta, entrega, redespacho, transbordo, transferencia }
+@JsonEnum()
+enum DocStatus {
+  @JsonValue("APP")
+  app,
+  @JsonValue("COLETA")
+  coleta,
+  @JsonValue("ENTREGA")
+  entrega,
+  @JsonValue("REDESPACHO")
+  redespacho,
+  @JsonValue("TRANSBORDO")
+  transbordo,
+  @JsonValue("TRANSFERENCIA")
+  transferencia,
+}
 
-@JsonSerializable()
-class Doc {
-  final String ar;
-  final String chave;
-  final String numero;
-  final DocStatus status;
-  final Romaneio romaneio;
-  final String destinatario;
-  final String remetente;
-  final int? volumes;
-
-  Doc({
-    required this.ar,
-    required this.chave,
-    required this.numero,
-    required this.status,
-    required this.romaneio,
-    required this.destinatario,
-    required this.remetente,
-    this.volumes,
-  });
+@freezed
+abstract class Doc with _$Doc {
+  const factory Doc({
+    required String ar,
+    required String chave,
+    required String numero,
+    required DocStatus status,
+    required Romaneio romaneio,
+    required String destinatario,
+    required String remetente,
+    int? volumes,
+  }) = _Doc;
 
   factory Doc.fromJson(Map<String, dynamic> json) => _$DocFromJson(json);
-
-  Map<String, dynamic> toJson() => _$DocToJson(this);
 }

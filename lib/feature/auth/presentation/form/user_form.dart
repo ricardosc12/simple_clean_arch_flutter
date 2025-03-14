@@ -26,12 +26,12 @@ class UserFormController extends FormController<LoginUserDto> {
   UserFormController({required super.onSuccess});
 
   @override
-  void submit() {
+  Future<bool> submit() async {
     try {
       final state = formKey.currentState;
 
       if (state == null || !state.saveAndValidate()) {
-        return;
+        return false;
       }
 
       final values = state.value;
@@ -42,10 +42,11 @@ class UserFormController extends FormController<LoginUserDto> {
           password: values[UserFields.password.name],
         ),
       );
+      return true;
     } catch (e) {
       // LOG: Sistema de Log
       print(e);
-      return;
+      return false;
     }
   }
 }

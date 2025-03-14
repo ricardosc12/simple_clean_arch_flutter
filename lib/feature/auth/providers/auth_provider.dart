@@ -17,11 +17,11 @@ class Auth extends _$Auth {
     _authRepository = AuthRepositoryImpl(
       networkService: DioService(config: config),
     );
-    return AuthState.init();
+    return const AuthState.init();
   }
 
   void login(LoginUserDto data) async {
-    state = Loading();
+    state = const AuthState.loading();
 
     final res = await _authRepository.login(
       login: data.login,
@@ -30,10 +30,10 @@ class Auth extends _$Auth {
 
     res.when(
       (user) {
-        state = Logged(user: user);
+        state = AuthState.logged(user: user);
       },
       (e) {
-        state = Error();
+        state = AuthState.error();
       },
     );
   }

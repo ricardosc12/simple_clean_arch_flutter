@@ -6,7 +6,7 @@ part of 'doc.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Doc _$DocFromJson(Map<String, dynamic> json) => Doc(
+_Doc _$DocFromJson(Map<String, dynamic> json) => _Doc(
   ar: json['ar'] as String,
   chave: json['chave'] as String,
   numero: json['numero'] as String,
@@ -17,7 +17,7 @@ Doc _$DocFromJson(Map<String, dynamic> json) => Doc(
   volumes: (json['volumes'] as num?)?.toInt(),
 );
 
-Map<String, dynamic> _$DocToJson(Doc instance) => <String, dynamic>{
+Map<String, dynamic> _$DocToJson(_Doc instance) => <String, dynamic>{
   'ar': instance.ar,
   'chave': instance.chave,
   'numero': instance.numero,
@@ -29,10 +29,10 @@ Map<String, dynamic> _$DocToJson(Doc instance) => <String, dynamic>{
 };
 
 const _$DocStatusEnumMap = {
-  DocStatus.app: 'app',
-  DocStatus.coleta: 'coleta',
-  DocStatus.entrega: 'entrega',
-  DocStatus.redespacho: 'redespacho',
-  DocStatus.transbordo: 'transbordo',
-  DocStatus.transferencia: 'transferencia',
+  DocStatus.app: 'APP',
+  DocStatus.coleta: 'COLETA',
+  DocStatus.entrega: 'ENTREGA',
+  DocStatus.redespacho: 'REDESPACHO',
+  DocStatus.transbordo: 'TRANSBORDO',
+  DocStatus.transferencia: 'TRANSFERENCIA',
 };

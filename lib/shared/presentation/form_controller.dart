@@ -8,7 +8,7 @@ abstract class FormController<T> {
 
   FormController({required this.onSuccess});
 
-  void submit();
+  Future<bool> submit();
 
   void reset() {
     formKey.currentState?.reset();
