@@ -20,12 +20,5 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
           ),
     );
-    // return MaterialApp(
-    //   title: 'Flutter Demo',
-    //   theme: ThemeData(
-    //     colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-    //   ),
-    //   home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    // );
   }
 }
