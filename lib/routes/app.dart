@@ -53,7 +53,7 @@ class AppRouter extends RootStackRouter {
               path: "detail",
               page: RomaneioDetailRoute.page,
               guards: [
-                EnsureParamsGuard(fallbackRoute: const RomaneioListRoute()),
+                // EnsureParamsGuard(fallbackRoute: const RomaneioListRoute()),
               ],
             ),
           ],

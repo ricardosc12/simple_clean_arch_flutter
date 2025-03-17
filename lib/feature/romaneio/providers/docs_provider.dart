@@ -46,21 +46,19 @@ class Docs extends _$Docs {
     state = await _fetchDocs();
   }
 
+  void removeDoc({required String ar}) {
+    final index = state.docs.indexWhere((e) => e.ar == ar);
+    if (index == -1) return;
+    state = state.copyWith(docs: state.docs.removeAt(index));
+  }
+
+  void addDoc({required CreateDocDto doc}) {
+    final _doc = createExampleDoc(doc);
+    state = state.copyWith(docs: state.docs.insert(0, _doc));
+  }
+
   void editDoc({required String ar, required CreateDocDto doc}) {
-    final _doc = Doc(
-      ar: faker.randomGenerator.fromCharSet("0123456789", 15),
-      chave: faker.randomGenerator.fromCharSet("0123456789", 15),
-      numero: faker.randomGenerator.fromCharSet("0123456789", 8),
-      status: doc.status,
-      romaneio: Romaneio(
-        cod: faker.randomGenerator.fromCharSet("0123456789", 8),
-        numero: faker.randomGenerator.fromCharSet("0123456789", 8),
-        grupoEmp: "JC",
-        tipo: RomaneioTipo.app,
-      ),
-      destinatario: doc.destinatario,
-      remetente: doc.remetente,
-    );
+    final _doc = createExampleDoc(doc);
 
     final index = state.docs.indexWhere((d) => d.ar == ar);
 
@@ -77,4 +75,21 @@ class Docs extends _$Docs {
       ),
     );
   }
+}
+
+Doc createExampleDoc(CreateDocDto doc_dto) {
+  return Doc(
+    ar: faker.randomGenerator.fromCharSet("0123456789", 15),
+    chave: faker.randomGenerator.fromCharSet("0123456789", 15),
+    numero: faker.randomGenerator.fromCharSet("0123456789", 8),
+    status: doc_dto.status,
+    romaneio: Romaneio(
+      cod: faker.randomGenerator.fromCharSet("0123456789", 8),
+      numero: faker.randomGenerator.fromCharSet("0123456789", 8),
+      grupoEmp: "JC",
+      tipo: RomaneioTipo.app,
+    ),
+    destinatario: doc_dto.destinatario,
+    remetente: doc_dto.remetente,
+  );
 }

@@ -11,9 +11,8 @@ abstract class DocSchema {
     DocFields.status: FormBuilderValidators.compose([
       FormBuilderValidators.required(errorText: "Selecione um status"),
       FormBuilderValidators.containsElement(
-        DocStatus.values.map((e) => e.name).toList(),
+        DocStatus.values.map((e) => e.itemValue).toList(),
       ),
-      // FormBuilderValidators.transform((value) => value, validator)
     ]),
     DocFields.destinatario: FormBuilderValidators.compose([
       FormBuilderValidators.required(errorText: "Destinatário obrigatória"),
@@ -44,7 +43,9 @@ class DocFormController extends FormController<CreateDocDto> {
 
       onSuccess(
         CreateDocDto(
-          status: values[DocFields.status.name],
+          status: DocStatus.values.byName(
+            values[DocFields.status.name].toString().toLowerCase(),
+          ),
           destinatario: values[DocFields.destinatario.name],
           remetente: values[DocFields.remetente.name],
         ),

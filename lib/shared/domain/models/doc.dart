@@ -17,7 +17,25 @@ enum DocStatus {
   @JsonValue("TRANSBORDO")
   transbordo,
   @JsonValue("TRANSFERENCIA")
-  transferencia,
+  transferencia;
+
+  String get itemValue => name.toUpperCase();
+  String get itemLabel {
+    switch (this) {
+      case app:
+        return "App";
+      case coleta:
+        return "Coleta";
+      case entrega:
+        return "Entrega";
+      case redespacho:
+        return "Redespacho";
+      case transbordo:
+        return "Transbordo";
+      case transferencia:
+        return "Transferência";
+    }
+  }
 }
 
 @freezed

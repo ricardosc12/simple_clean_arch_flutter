@@ -13,7 +13,9 @@ class DashboardScreen extends ConsumerWidget {
     return Scaffold(
       appBar: DefaultAppBar(),
       body: SafeArea(
-        child: Column(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          spacing: 10,
           children: [
             ElevatedButton(
               onPressed: () {
@@ -25,7 +27,7 @@ class DashboardScreen extends ConsumerWidget {
               onPressed: () {
                 ref.read(routeProvider).navigate(const DashRomRoute());
               },
-              child: const Text("Dash Rom"),
+              child: const Text("Dash Detail"),
             ),
           ],
         ),

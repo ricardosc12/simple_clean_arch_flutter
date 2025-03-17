@@ -6,7 +6,7 @@ part of 'docs_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$docsHash() => r'16166e55086d8c1072b897766af1e54de155cfaa';
+String _$docsHash() => r'1ac19e85e10abef15cb2aa94ae65eff0ac669dd3';
 
 /// See also [Docs].
 @ProviderFor(Docs)

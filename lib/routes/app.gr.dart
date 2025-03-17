@@ -93,33 +93,32 @@ class MainLayoutRoute extends PageRouteInfo<void> {
 /// generated route for
 /// [RomaneioDetailScreen]
 class RomaneioDetailRoute extends PageRouteInfo<RomaneioDetailRouteArgs> {
-  RomaneioDetailRoute({
-    Key? key,
-    required Doc doc,
-    List<PageRouteInfo>? children,
-  }) : super(
-         RomaneioDetailRoute.name,
-         args: RomaneioDetailRouteArgs(key: key, doc: doc),
-         initialChildren: children,
-       );
+  RomaneioDetailRoute({Key? key, Doc? doc, List<PageRouteInfo>? children})
+    : super(
+        RomaneioDetailRoute.name,
+        args: RomaneioDetailRouteArgs(key: key, doc: doc),
+        initialChildren: children,
+      );
 
   static const String name = 'RomaneioDetailRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<RomaneioDetailRouteArgs>();
+      final args = data.argsAs<RomaneioDetailRouteArgs>(
+        orElse: () => const RomaneioDetailRouteArgs(),
+      );
       return RomaneioDetailScreen(key: args.key, doc: args.doc);
     },
   );
 }
 
 class RomaneioDetailRouteArgs {
-  const RomaneioDetailRouteArgs({this.key, required this.doc});
+  const RomaneioDetailRouteArgs({this.key, this.doc});
 
   final Key? key;
 
-  final Doc doc;
+  final Doc? doc;
 
   @override
   String toString() {

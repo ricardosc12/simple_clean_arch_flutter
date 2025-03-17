@@ -10,25 +10,28 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 @RoutePage()
 class RomaneioDetailScreen extends ConsumerWidget {
-  final Doc doc;
+  final Doc? doc;
 
-  const RomaneioDetailScreen({super.key, required this.doc});
+  const RomaneioDetailScreen({super.key, this.doc});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final doc = this.doc;
     return Scaffold(
       appBar: DefaultAppBar(),
-      // body: const Text("asd"),
       body: Paper(
         child: DocForm(
-          form: ref.watch(formDocProvider(doc.ar)),
+          form: ref.watch(formDocProvider(doc?.ar)),
           onFinalize:
               () => ref.read(routeProvider).navigate(const RomaneioListRoute()),
-          initialState: CreateDocDto(
-            status: doc.status,
-            destinatario: doc.destinatario,
-            remetente: doc.remetente,
-          ),
+          initialState:
+              doc != null
+                  ? CreateDocDto(
+                    status: doc.status,
+                    destinatario: doc.destinatario,
+                    remetente: doc.remetente,
+                  )
+                  : null,
         ),
       ),
     );

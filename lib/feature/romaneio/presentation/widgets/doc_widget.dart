@@ -37,19 +37,28 @@ class DocWidget extends ConsumerWidget {
           Text(doc.status.name),
           Text(doc.destinatario),
           Text(doc.remetente),
-          () {
-            final date = getDate();
-            return Text(date);
-          }(),
+          Text(getDate()),
           Consumer(
             builder:
-                (_, ref, _) => OutlinedButton(
-                  onPressed: () {
-                    ref
-                        .read(routeProvider)
-                        .navigate(RomaneioDetailRoute(doc: doc));
-                  },
-                  child: const Text("Detail"),
+                (_, ref, _) => Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  spacing: 10,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        ref
+                            .read(routeProvider)
+                            .navigate(RomaneioDetailRoute(doc: doc));
+                      },
+                      child: const Text("Detail"),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        ref.read(docsProvider.notifier).removeDoc(ar: doc.ar);
+                      },
+                      child: const Text("Deletar"),
+                    ),
+                  ],
                 ),
           ),
         ],

@@ -69,9 +69,9 @@ class HomeScreen extends ConsumerWidget {
             const Buttons(),
             ElevatedButton(
               onPressed: () {
-                ref.read(routeProvider).navigate(const DashboardRoute());
+                ref.read(routeProvider).navigate(const RomaneioListRoute());
               },
-              child: const Text("Login"),
+              child: const Text("Rom Page"),
             ),
           ],
         ),

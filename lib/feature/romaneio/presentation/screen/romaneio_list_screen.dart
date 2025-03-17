@@ -2,6 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/feature/romaneio/presentation/widgets/doc_widget.dart';
 import 'package:flutter_application_1/feature/romaneio/providers/docs_provider.dart';
+import 'package:flutter_application_1/feature/romaneio/providers/docs_state.dart';
+import 'package:flutter_application_1/routes/app.dart';
+import 'package:flutter_application_1/shared/presentation/animations/loading.dart';
 import 'package:flutter_application_1/shared/presentation/layout/app_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -17,17 +20,47 @@ class RomaneioListScreen extends ConsumerWidget {
         onRefresh: ref.read(docsProvider.notifier).syncDocs,
         child: Column(
           children: <Widget>[
-            ElevatedButton(
-              onPressed: () {
-                ref.read(docsProvider.notifier).pushDoc();
-              },
-              child: const Text("Add"),
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    spacing: 10,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          ref.read(docsProvider.notifier).pushDoc();
+                        },
+                        child: const Text("Render Test"),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          ref
+                              .read(routeProvider)
+                              .navigate(RomaneioDetailRoute());
+                        },
+                        child: const Text("Adicionar Doc"),
+                      ),
+                    ],
+                  ),
+                  Consumer(
+                    builder: (_, ref, _) {
+                      final docsLength = ref.watch(
+                        docsProvider.select((e) => e.docs.length),
+                      );
+                      return Text("Documentos totais: $docsLength");
+                    },
+                  ),
+                ],
+              ),
             ),
 
-            // if (ref.watch(docsProvider.select((e) => e.status)) ==
-            //     DocsStatus.initalLoading)
-            //   const Expanded(child: Center(child: LoadingProgress(size: 70))),
-
+            if (ref.watch(docsProvider.select((e) => e.status)) ==
+                DocsStatus.initalLoading)
+              const Expanded(child: Center(child: LoadingProgress(size: 70))),
+              
             Expanded(
               child: ListView.builder(
                 itemCount: ref.watch(docsProvider.select((e) => e.docs.length)),

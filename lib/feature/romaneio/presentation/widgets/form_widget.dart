@@ -25,13 +25,16 @@ class DocForm extends StatelessWidget {
       initialValue: initialState?.toJson() ?? {},
       key: form.formKey,
       child: Column(
+        spacing: 10,
         children: [
           FormBuilderDropdown(
             items:
                 DocStatus.values
                     .map(
-                      (e) =>
-                          DropdownMenuItem(value: e.name, child: Text(e.name)),
+                      (e) => DropdownMenuItem(
+                        value: e.itemValue,
+                        child: Text(e.itemLabel),
+                      ),
                     )
                     .toList(),
             name: DocFields.status.name,
@@ -61,13 +64,15 @@ class DocForm extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   form.submit().then((value) {
-                    print("FINALIZE $value");
                     if (value) {
                       onFinalize?.call();
                     }
                   });
                 },
-                child: Text("Submit"),
+                child:
+                    initialState != null
+                        ? const Text("Editar")
+                        : const Text("Criar"),
               ),
             ],
           ),
@@ -77,7 +82,12 @@ class DocForm extends StatelessWidget {
   }
 }
 
-final formDocProvider = Provider.family<DocFormController, String>((ref, ar) {
+final formDocProvider = Provider.family<DocFormController, String?>((ref, ar) {
   final docs = ref.watch(docsProvider.notifier);
-  return DocFormController(onSuccess: (doc) => docs.editDoc(ar: ar, doc: doc));
+
+  return DocFormController(
+    onSuccess:
+        (doc) =>
+            ar != null ? docs.editDoc(ar: ar, doc: doc) : docs.addDoc(doc: doc),
+  );
 }, dependencies: docsProvider.allTransitiveDependencies);
