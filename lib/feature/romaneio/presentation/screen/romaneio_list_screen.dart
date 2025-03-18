@@ -46,7 +46,9 @@ class RomaneioListScreen extends ConsumerWidget {
                       ),
                       ElevatedButton(
                         onPressed: () {
-                          ref.read(routeProvider).navigate(const IncidenteRoute());
+                          ref
+                              .read(routeProvider)
+                              .navigate(const IncidenteRoute());
                         },
                         child: const Text("Incidente Page"),
                       ),
