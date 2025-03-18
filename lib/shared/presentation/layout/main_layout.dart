@@ -9,7 +9,11 @@ class MainLayoutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AutoTabsRouter(
-      routes: const [DashboardRoute(), RomaneioNavigationRoute()],
+      routes: const [
+        DashboardRoute(),
+        RomaneioNavigationRoute(),
+        IncidenteRoute(),
+      ],
       transitionBuilder:
           (context, child, animation) =>
               FadeTransition(opacity: animation, child: child),
@@ -31,6 +35,10 @@ class MainLayoutPage extends StatelessWidget {
               BottomNavigationBarItem(
                 label: "Romaneio",
                 icon: const Icon(Icons.fire_truck),
+              ),
+              BottomNavigationBarItem(
+                label: "Incidente",
+                icon: const Icon(Icons.chat),
               ),
             ],
           ),

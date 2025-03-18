@@ -53,3 +53,4 @@ abstract class Doc with _$Doc {
 
   factory Doc.fromJson(Map<String, dynamic> json) => _$DocFromJson(json);
 }
+

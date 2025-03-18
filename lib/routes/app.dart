@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_application_1/feature/auth/presentation/login_screen.dart';
+import 'package:flutter_application_1/feature/chat/presentation/screen/incidente_screen.dart';
 import 'package:flutter_application_1/feature/dashboard/presentation/dash_navigation_screen.dart';
 import 'package:flutter_application_1/feature/dashboard/presentation/dash_rom_screen.dart';
 import 'package:flutter_application_1/feature/dashboard/presentation/dashboard_screen.dart';
@@ -35,6 +36,7 @@ class AppRouter extends RootStackRouter {
       path: "/app",
       // guards: [AuthGuard(ref)],
       children: [
+        AutoRoute(path: "incidente", page: IncidenteRoute.page),
         AutoRoute(
           path: "dashboard",
           page: DashNavigationRoute.page,

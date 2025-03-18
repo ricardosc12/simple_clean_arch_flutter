@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/feature/romaneio/presentation/widgets/doc_widget.dart';
 import 'package:flutter_application_1/feature/romaneio/providers/docs_provider.dart';
@@ -43,6 +44,12 @@ class RomaneioListScreen extends ConsumerWidget {
                         },
                         child: const Text("Adicionar Doc"),
                       ),
+                      ElevatedButton(
+                        onPressed: () {
+                          ref.read(routeProvider).navigate(const IncidenteRoute());
+                        },
+                        child: const Text("Incidente Page"),
+                      ),
                     ],
                   ),
                   Consumer(
@@ -60,7 +67,7 @@ class RomaneioListScreen extends ConsumerWidget {
             if (ref.watch(docsProvider.select((e) => e.status)) ==
                 DocsStatus.initalLoading)
               const Expanded(child: Center(child: LoadingProgress(size: 70))),
-              
+
             Expanded(
               child: ListView.builder(
                 itemCount: ref.watch(docsProvider.select((e) => e.docs.length)),

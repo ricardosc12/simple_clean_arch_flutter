@@ -34,7 +34,7 @@ class DocWidget extends ConsumerWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Text(doc.ar),
-          Text(doc.status.name),
+          Text(doc.status.itemLabel),
           Text(doc.destinatario),
           Text(doc.remetente),
           Text(getDate()),
