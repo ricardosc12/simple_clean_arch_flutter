@@ -23,10 +23,7 @@ class Auth extends _$Auth {
   void login(LoginUserDto data) async {
     state = const AuthState.loading();
 
-    final res = await _authRepository.login(
-      login: data.login,
-      password: data.password,
-    );
+    final res = await _authRepository.login(data);
 
     res.when(
       (user) {

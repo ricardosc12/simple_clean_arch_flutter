@@ -2,12 +2,21 @@ import 'package:dio/dio.dart';
 import 'package:flutter_application_1/configs/app_config.dart';
 import 'package:flutter_application_1/shared/data/network_service.dart';
 import 'package:multiple_result/multiple_result.dart';
+import 'package:talker_dio_logger/talker_dio_logger_interceptor.dart';
+import 'package:talker_dio_logger/talker_dio_logger_settings.dart';
 
 class DioService extends NetworkService {
   final AppConfigState config;
-  final Dio dio = Dio();
+  late final Dio dio;
 
-  DioService({required this.config});
+  DioService({required this.config}) {
+    final dio = Dio(BaseOptions(baseUrl: config.baseUrl));
+    dio.interceptors.add(
+      TalkerDioLogger(settings: const TalkerDioLoggerSettings()),
+    );
+
+    this.dio = dio;
+  }
 
   @override
   String get baseUrl => config.baseUrl;

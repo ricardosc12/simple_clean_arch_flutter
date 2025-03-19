@@ -10,7 +10,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class DocForm extends StatelessWidget {
   final FormController form;
   final CreateDocDto? initialState;
-  final void Function()? onFinalize;
+  final void Function(FormStatus status)? onFinalize;
 
   const DocForm({
     super.key,
@@ -63,11 +63,7 @@ class DocForm extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  form.submit().then((value) {
-                    if (value) {
-                      onFinalize?.call();
-                    }
-                  });
+                  form.submit().then((value) => onFinalize?.call(value));
                 },
                 child:
                     initialState != null

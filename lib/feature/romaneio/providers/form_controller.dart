@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/shared/domain/dto/doc.dart';
 import 'package:flutter_application_1/shared/domain/models/doc.dart';
+import 'package:flutter_application_1/shared/log/log_service.dart';
 import 'package:flutter_application_1/shared/presentation/form_controller.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
@@ -31,12 +32,12 @@ class DocFormController extends FormController<CreateDocDto> {
   DocFormController({required super.onSuccess});
 
   @override
-  Future<bool> submit() async {
+  Future<FormStatus> submit() async {
     try {
       final state = formKey.currentState;
 
       if (state == null || !state.saveAndValidate()) {
-        return false;
+        return FormStatus.invalid;
       }
 
       final values = state.value;
@@ -51,11 +52,10 @@ class DocFormController extends FormController<CreateDocDto> {
         ),
       );
 
-      return true;
+      return FormStatus.submitted;
     } catch (e) {
-      // LOG: Sistema de Log
-      print(e);
-      return false;
+      LogService.logger.error(e);
+      return FormStatus.error;
     }
   }
 }
