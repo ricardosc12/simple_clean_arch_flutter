@@ -75,6 +75,61 @@ class HomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [IncidenteDetailScreen]
+class IncidenteDetailRoute extends PageRouteInfo<IncidenteDetailRouteArgs> {
+  IncidenteDetailRoute({
+    Key? key,
+    Incidente? incidente,
+    List<PageRouteInfo>? children,
+  }) : super(
+         IncidenteDetailRoute.name,
+         args: IncidenteDetailRouteArgs(key: key, incidente: incidente),
+         initialChildren: children,
+       );
+
+  static const String name = 'IncidenteDetailRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<IncidenteDetailRouteArgs>(
+        orElse: () => const IncidenteDetailRouteArgs(),
+      );
+      return IncidenteDetailScreen(key: args.key, incidente: args.incidente);
+    },
+  );
+}
+
+class IncidenteDetailRouteArgs {
+  const IncidenteDetailRouteArgs({this.key, this.incidente});
+
+  final Key? key;
+
+  final Incidente? incidente;
+
+  @override
+  String toString() {
+    return 'IncidenteDetailRouteArgs{key: $key, incidente: $incidente}';
+  }
+}
+
+/// generated route for
+/// [IncidenteNavigationScreen]
+class IncidenteNavigationRoute extends PageRouteInfo<void> {
+  const IncidenteNavigationRoute({List<PageRouteInfo>? children})
+    : super(IncidenteNavigationRoute.name, initialChildren: children);
+
+  static const String name = 'IncidenteNavigationRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const IncidenteNavigationScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [IncidenteScreen]
 class IncidenteRoute extends PageRouteInfo<void> {
   const IncidenteRoute({List<PageRouteInfo>? children})

@@ -1,16 +1,20 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_application_1/feature/auth/presentation/login_screen.dart';
-import 'package:flutter_application_1/feature/chat/presentation/screen/incidente_screen.dart';
 import 'package:flutter_application_1/feature/dashboard/presentation/dash_navigation_screen.dart';
 import 'package:flutter_application_1/feature/dashboard/presentation/dash_rom_screen.dart';
 import 'package:flutter_application_1/feature/dashboard/presentation/dashboard_screen.dart';
+import 'package:flutter_application_1/feature/incidente/presentation/screen/incidente_nav_screen.dart';
 import 'package:flutter_application_1/feature/romaneio/presentation/screen/romaneio_detail_screen.dart';
 import 'package:flutter_application_1/feature/romaneio/presentation/screen/romaneio_list_screen.dart';
 import 'package:flutter_application_1/feature/romaneio/presentation/screen/romaneio_nav_screen.dart';
 import 'package:flutter_application_1/shared/domain/models/doc.dart';
 import 'package:flutter_application_1/shared/presentation/layout/main_layout.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../feature/incidente/presentation/screen/incidente_detail_screen.dart';
+import '../feature/incidente/presentation/screen/incidente_screen.dart';
+import '../shared/domain/models/incidente.dart';
 
 part 'app.gr.dart';
 
@@ -36,7 +40,21 @@ class AppRouter extends RootStackRouter {
       path: "/app",
       // guards: [AuthGuard(ref)],
       children: [
-        AutoRoute(path: "incidente", page: IncidenteRoute.page),
+        AutoRoute(
+            path: "incidente",
+            page: IncidenteNavigationRoute.page,
+            children: [
+              AutoRoute(
+                  path: "",
+                  page: IncidenteRoute.page,
+                  initial: true,
+              ),
+              AutoRoute(
+                  path: "detail",
+                  page: IncidenteDetailRoute.page,
+              ),
+            ]
+        ),
         AutoRoute(
           path: "dashboard",
           page: DashNavigationRoute.page,

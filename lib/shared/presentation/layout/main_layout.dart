@@ -12,7 +12,7 @@ class MainLayoutPage extends StatelessWidget {
       routes: const [
         DashboardRoute(),
         RomaneioNavigationRoute(),
-        IncidenteRoute(),
+        IncidenteNavigationRoute(),
       ],
       transitionBuilder:
           (context, child, animation) =>
