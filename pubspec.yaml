@@ -50,6 +50,17 @@ dependencies:
   flutter_conditional_rendering: ^2.1.0
   camera_web: ^0.3.5
   camera: ^0.11.1
+  timezone: ^0.10.0
+  uuid: ^4.5.1
+  talker: ^4.7.1
+  talker_flutter: ^4.7.1
+  talker_dio_logger: ^4.7.1
+  stack_trace: ^1.12.1
+  oktoast: ^3.4.0
+  sliding_up_panel: ^2.0.0+1
+  google_fonts: ^6.2.1
+  flutter_hooks: ^0.21.2
+  hooks_riverpod: ^2.6.1
 
 dev_dependencies:
   flutter_test:

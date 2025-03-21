@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
+enum FormStatus { submitted, invalid, error }
+
 abstract class FormController<T> {
   final GlobalKey<FormBuilderState> formKey = GlobalKey<FormBuilderState>();
 
@@ -8,7 +10,7 @@ abstract class FormController<T> {
 
   FormController({required this.onSuccess});
 
-  Future<bool> submit();
+  Future<FormStatus> submit();
 
   void reset() {
     formKey.currentState?.reset();

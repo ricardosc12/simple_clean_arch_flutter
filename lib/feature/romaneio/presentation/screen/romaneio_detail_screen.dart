@@ -4,6 +4,7 @@ import 'package:flutter_application_1/feature/romaneio/presentation/widgets/form
 import 'package:flutter_application_1/routes/app.dart';
 import 'package:flutter_application_1/shared/domain/dto/doc.dart';
 import 'package:flutter_application_1/shared/domain/models/doc.dart';
+import 'package:flutter_application_1/shared/presentation/form_controller.dart';
 import 'package:flutter_application_1/shared/presentation/layout/app_bar.dart';
 import 'package:flutter_application_1/shared/presentation/layout/paper.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -22,8 +23,11 @@ class RomaneioDetailScreen extends ConsumerWidget {
       body: Paper(
         child: DocForm(
           form: ref.watch(formDocProvider(doc?.ar)),
-          onFinalize:
-              () => ref.read(routeProvider).navigate(const RomaneioListRoute()),
+          onFinalize: (status) {
+            if (status == FormStatus.submitted) {
+              ref.read(routeProvider).navigate(const RomaneioListRoute());
+            }
+          },
           initialState:
               doc != null
                   ? CreateDocDto(
