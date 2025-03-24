@@ -6,7 +6,7 @@ part of 'incidente_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$incidentesHash() => r'f2d89d9a6bd301292938cbecb01356aedab0367c';
+String _$incidentesHash() => r'5d631993283c85d6ccdd2d39b392f9d214d9c8de';
 
 /// See also [Incidentes].
 @ProviderFor(Incidentes)

@@ -61,6 +61,7 @@ dependencies:
   google_fonts: ^6.2.1
   flutter_hooks: ^0.21.2
   hooks_riverpod: ^2.6.1
+  mask_text_input_formatter: ^2.0.0
 
 dev_dependencies:
   flutter_test:

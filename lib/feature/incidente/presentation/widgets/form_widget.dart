@@ -6,7 +6,10 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../shared/domain/dto/incidente.dart';
 import '../../../../shared/presentation/form_controller.dart';
+import '../../../../shared/presentation/layout/mask_text_input.dart';
+import '../../../../shared/presentation/layout/toast.dart';
 import '../../providers/form_controller.dart';
+import 'package:intl/intl.dart';
 
 class IncidenteForm extends StatelessWidget {
   final FormController form;
@@ -55,11 +58,28 @@ class IncidenteForm extends StatelessWidget {
             name: IncidenteFields.telefone.name,
             decoration: const InputDecoration(labelText: "Telefone"),
             validator: IncidenteSchema.validator(IncidenteFields.telefone),
+            inputFormatters: [maskFormatter],
           ),
           FormBuilderTextField(
             name: IncidenteFields.resumo.name,
-            decoration: const InputDecoration(labelText: "Resumo do incidente"),
+            decoration: const InputDecoration(
+              labelText: "Resumo do incidente",
+            ),
             validator: IncidenteSchema.validator(IncidenteFields.resumo),
+            maxLines: 3,
+            keyboardType: TextInputType.multiline,
+          ),
+
+          FormBuilderDateTimePicker(
+            name: IncidenteFields.data.name,
+            decoration: const InputDecoration(labelText: "Data do incidente"),
+            format: DateFormat("dd/MM/yyyy"),
+            inputType: InputType.date,
+            firstDate: DateTime.now().subtract(const Duration(days: 7)),
+            lastDate: DateTime.now(),
+            initialValue: initialState?.data is String
+                ? DateTime.tryParse(initialState!.data as String)
+                : initialState?.data,
           ),
 
           Row(
@@ -68,15 +88,17 @@ class IncidenteForm extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   form.reset();
+                  ToastHelper.info("Informações apagadas");
                 },
                 child: const Text("Clear"),
               ),
               ElevatedButton(
                 onPressed: () {
                   form.submit().then((value) {
-                    if (value) {
+                    if (value == FormStatus.success) {
                       onFinalize?.call();
                       context.router.pop();
+                      ToastHelper.success("Incidente criado com sucesso");
                     }
                   });
                 },

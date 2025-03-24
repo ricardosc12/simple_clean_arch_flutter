@@ -16,6 +16,7 @@ class IncidenteRepositoryLocalImpl implements IncidenteRepository {
     List<String> emails = List.generate(6, (_) => faker.internet.email());
     List<String> telefones = List.generate(6, (_) => faker.phoneNumber.de());
     List<String> resumos = List.generate(6, (_) => faker.lorem.sentence());
+    List<DateTime> datas = List.generate(6, (_) => faker.date.dateTime());
 
     List<Incidente> incidentes = [];
 
@@ -27,6 +28,7 @@ class IncidenteRepositoryLocalImpl implements IncidenteRepository {
           email: faker.randomGenerator.element(emails),
           resumo: faker.randomGenerator.element(resumos),
           telefone: faker.randomGenerator.element(telefones),
+          data: faker.randomGenerator.element(datas),
           situacao:
               incidenteSituacao[faker.randomGenerator.integer(
                 incidenteSituacao.length,

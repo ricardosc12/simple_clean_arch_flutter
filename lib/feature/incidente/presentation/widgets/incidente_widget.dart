@@ -3,7 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../routes/app.dart';
 import '../../../../shared/domain/models/incidente.dart';
 import '../../../../shared/presentation/layout/paper.dart';
+import '../../../../shared/presentation/layout/toast.dart';
 import '../../providers/incidente_provider.dart';
+import 'package:intl/intl.dart';
 
 class IncidenteWidgetWrapper extends ConsumerWidget {
   IncidenteWidgetWrapper({super.key});
@@ -49,6 +51,7 @@ class IncidenteWidget extends ConsumerWidget {
           Text(incidente.telefone),
           Text(incidente.email),
           Text(incidente.resumo),
+          Text(DateFormat('dd/MM/yyyy').format(incidente.data)),
           Consumer(
             builder:
                 (_, ref, _) => Row(
@@ -70,6 +73,7 @@ class IncidenteWidget extends ConsumerWidget {
                         ref
                             .read(incidentesProvider.notifier)
                             .removeIncidente(id: incidente.id);
+                        ToastHelper.success("Incidente removido com sucesso");
                       },
                       child: const Text("Deletar"),
                     ),

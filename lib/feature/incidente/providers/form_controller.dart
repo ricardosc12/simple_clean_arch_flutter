@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import '../../../shared/presentation/form_controller.dart';
 
-enum IncidenteFields { situacao, nomeRelator, email, telefone, resumo }
+enum IncidenteFields { situacao, nomeRelator, email, telefone, resumo, data }
 
 abstract class IncidenteSchema {
   static final Map<IncidenteFields, FormFieldValidator<String>> validators = {
@@ -45,10 +45,11 @@ class IncidenteFormController extends FormController<CreateIncidenteDto> {
   IncidenteFormController({required super.onSuccess, required this.ref});
 
   @override
-  Future<bool> submit() async {
+  Future<FormStatus> submit() async {
     final state = formKey.currentState;
-    if (state == null || !state.saveAndValidate()) return false;
-
+    if (state == null || !state.saveAndValidate()) {
+      return FormStatus.failure;
+    }
     final values = state.value;
 
     onSuccess(
@@ -60,9 +61,11 @@ class IncidenteFormController extends FormController<CreateIncidenteDto> {
         email: values[IncidenteFields.email.name] ?? "",
         telefone: values[IncidenteFields.telefone.name] ?? "",
         resumo: values[IncidenteFields.resumo.name] ?? "",
+        data: values[IncidenteFields.data.name] ?? "",
+
       ),
     );
 
-    return true;
+    return FormStatus.success;
   }
 }

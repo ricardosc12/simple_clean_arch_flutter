@@ -38,6 +38,7 @@ abstract class Incidente with _$Incidente {
     required String telefone,
     required IncidenteSituacao situacao,
     required String resumo,
+    required DateTime data,
   }) = _Incidente;
 
   factory Incidente.fromJson(Map<String, dynamic> json) => _$IncidenteFromJson(json);

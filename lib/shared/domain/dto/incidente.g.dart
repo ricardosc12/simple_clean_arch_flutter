@@ -13,6 +13,7 @@ _CreateIncidenteDto _$CreateIncidenteDtoFromJson(Map<String, dynamic> json) =>
       email: json['email'] as String,
       telefone: json['telefone'] as String,
       resumo: json['resumo'] as String,
+      data: DateTime.parse(json['data'] as String),
     );
 
 Map<String, dynamic> _$CreateIncidenteDtoToJson(_CreateIncidenteDto instance) =>
@@ -22,6 +23,7 @@ Map<String, dynamic> _$CreateIncidenteDtoToJson(_CreateIncidenteDto instance) =>
       'email': instance.email,
       'telefone': instance.telefone,
       'resumo': instance.resumo,
+      'data': instance.data.toIso8601String(),
     };
 
 const _$IncidenteSituacaoEnumMap = {

@@ -80,5 +80,6 @@ Incidente createExampleIncidente(CreateIncidenteDto incidenteDto) {
     email: incidenteDto.email,
     telefone: incidenteDto.telefone,
     resumo: incidenteDto.resumo,
+    data: incidenteDto.data,
   );
 }

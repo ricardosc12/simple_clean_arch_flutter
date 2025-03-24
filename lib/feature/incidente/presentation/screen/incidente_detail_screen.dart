@@ -31,7 +31,8 @@ class IncidenteDetailScreen extends ConsumerWidget {
                     email: incidente!.email,
                     telefone: incidente!.telefone,
                     resumo: incidente!.resumo,
-                  )
+                    data: incidente!.data,
+              )
                   : null,
         ),
       ),

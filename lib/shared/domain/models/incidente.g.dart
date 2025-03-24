@@ -13,6 +13,7 @@ _Incidente _$IncidenteFromJson(Map<String, dynamic> json) => _Incidente(
   telefone: json['telefone'] as String,
   situacao: $enumDecode(_$IncidenteSituacaoEnumMap, json['situacao']),
   resumo: json['resumo'] as String,
+  data: DateTime.parse(json['data'] as String),
 );
 
 Map<String, dynamic> _$IncidenteToJson(_Incidente instance) =>
@@ -23,6 +24,7 @@ Map<String, dynamic> _$IncidenteToJson(_Incidente instance) =>
       'telefone': instance.telefone,
       'situacao': _$IncidenteSituacaoEnumMap[instance.situacao]!,
       'resumo': instance.resumo,
+      'data': instance.data.toIso8601String(),
     };
 
 const _$IncidenteSituacaoEnumMap = {

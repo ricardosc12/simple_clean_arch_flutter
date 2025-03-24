@@ -12,6 +12,7 @@ abstract class CreateIncidenteDto with _$CreateIncidenteDto {
     required String email,
     required String telefone,
     required String resumo,
+    required DateTime data,
   }) = _CreateIncidenteDto;
 
   factory CreateIncidenteDto.fromJson(Map<String, dynamic> json) =>

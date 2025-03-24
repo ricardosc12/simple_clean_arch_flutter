@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Incidente {
 
- String get id; String get nomeRelator; String get email; String get telefone; IncidenteSituacao get situacao; String get resumo;
+ String get id; String get nomeRelator; String get email; String get telefone; IncidenteSituacao get situacao; String get resumo; DateTime get data;
 /// Create a copy of Incidente
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,16 +29,16 @@ $IncidenteCopyWith<Incidente> get copyWith => _$IncidenteCopyWithImpl<Incidente>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Incidente&&(identical(other.id, id) || other.id == id)&&(identical(other.nomeRelator, nomeRelator) || other.nomeRelator == nomeRelator)&&(identical(other.email, email) || other.email == email)&&(identical(other.telefone, telefone) || other.telefone == telefone)&&(identical(other.situacao, situacao) || other.situacao == situacao)&&(identical(other.resumo, resumo) || other.resumo == resumo));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Incidente&&(identical(other.id, id) || other.id == id)&&(identical(other.nomeRelator, nomeRelator) || other.nomeRelator == nomeRelator)&&(identical(other.email, email) || other.email == email)&&(identical(other.telefone, telefone) || other.telefone == telefone)&&(identical(other.situacao, situacao) || other.situacao == situacao)&&(identical(other.resumo, resumo) || other.resumo == resumo)&&(identical(other.data, data) || other.data == data));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,nomeRelator,email,telefone,situacao,resumo);
+int get hashCode => Object.hash(runtimeType,id,nomeRelator,email,telefone,situacao,resumo,data);
 
 @override
 String toString() {
-  return 'Incidente(id: $id, nomeRelator: $nomeRelator, email: $email, telefone: $telefone, situacao: $situacao, resumo: $resumo)';
+  return 'Incidente(id: $id, nomeRelator: $nomeRelator, email: $email, telefone: $telefone, situacao: $situacao, resumo: $resumo, data: $data)';
 }
 
 
@@ -49,7 +49,7 @@ abstract mixin class $IncidenteCopyWith<$Res>  {
   factory $IncidenteCopyWith(Incidente value, $Res Function(Incidente) _then) = _$IncidenteCopyWithImpl;
 @useResult
 $Res call({
- String id, String nomeRelator, String email, String telefone, IncidenteSituacao situacao, String resumo
+ String id, String nomeRelator, String email, String telefone, IncidenteSituacao situacao, String resumo, DateTime data
 });
 
 
@@ -66,7 +66,7 @@ class _$IncidenteCopyWithImpl<$Res>
 
 /// Create a copy of Incidente
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? nomeRelator = null,Object? email = null,Object? telefone = null,Object? situacao = null,Object? resumo = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? nomeRelator = null,Object? email = null,Object? telefone = null,Object? situacao = null,Object? resumo = null,Object? data = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,nomeRelator: null == nomeRelator ? _self.nomeRelator : nomeRelator // ignore: cast_nullable_to_non_nullable
@@ -74,7 +74,8 @@ as String,email: null == email ? _self.email : email // ignore: cast_nullable_to
 as String,telefone: null == telefone ? _self.telefone : telefone // ignore: cast_nullable_to_non_nullable
 as String,situacao: null == situacao ? _self.situacao : situacao // ignore: cast_nullable_to_non_nullable
 as IncidenteSituacao,resumo: null == resumo ? _self.resumo : resumo // ignore: cast_nullable_to_non_nullable
-as String,
+as String,data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+as DateTime,
   ));
 }
 
@@ -85,7 +86,7 @@ as String,
 @JsonSerializable()
 
 class _Incidente implements Incidente {
-  const _Incidente({required this.id, required this.nomeRelator, required this.email, required this.telefone, required this.situacao, required this.resumo});
+  const _Incidente({required this.id, required this.nomeRelator, required this.email, required this.telefone, required this.situacao, required this.resumo, required this.data});
   factory _Incidente.fromJson(Map<String, dynamic> json) => _$IncidenteFromJson(json);
 
 @override final  String id;
@@ -94,6 +95,7 @@ class _Incidente implements Incidente {
 @override final  String telefone;
 @override final  IncidenteSituacao situacao;
 @override final  String resumo;
+@override final  DateTime data;
 
 /// Create a copy of Incidente
 /// with the given fields replaced by the non-null parameter values.
@@ -108,16 +110,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Incidente&&(identical(other.id, id) || other.id == id)&&(identical(other.nomeRelator, nomeRelator) || other.nomeRelator == nomeRelator)&&(identical(other.email, email) || other.email == email)&&(identical(other.telefone, telefone) || other.telefone == telefone)&&(identical(other.situacao, situacao) || other.situacao == situacao)&&(identical(other.resumo, resumo) || other.resumo == resumo));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Incidente&&(identical(other.id, id) || other.id == id)&&(identical(other.nomeRelator, nomeRelator) || other.nomeRelator == nomeRelator)&&(identical(other.email, email) || other.email == email)&&(identical(other.telefone, telefone) || other.telefone == telefone)&&(identical(other.situacao, situacao) || other.situacao == situacao)&&(identical(other.resumo, resumo) || other.resumo == resumo)&&(identical(other.data, data) || other.data == data));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,nomeRelator,email,telefone,situacao,resumo);
+int get hashCode => Object.hash(runtimeType,id,nomeRelator,email,telefone,situacao,resumo,data);
 
 @override
 String toString() {
-  return 'Incidente(id: $id, nomeRelator: $nomeRelator, email: $email, telefone: $telefone, situacao: $situacao, resumo: $resumo)';
+  return 'Incidente(id: $id, nomeRelator: $nomeRelator, email: $email, telefone: $telefone, situacao: $situacao, resumo: $resumo, data: $data)';
 }
 
 
@@ -128,7 +130,7 @@ abstract mixin class _$IncidenteCopyWith<$Res> implements $IncidenteCopyWith<$Re
   factory _$IncidenteCopyWith(_Incidente value, $Res Function(_Incidente) _then) = __$IncidenteCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String nomeRelator, String email, String telefone, IncidenteSituacao situacao, String resumo
+ String id, String nomeRelator, String email, String telefone, IncidenteSituacao situacao, String resumo, DateTime data
 });
 
 
@@ -145,7 +147,7 @@ class __$IncidenteCopyWithImpl<$Res>
 
 /// Create a copy of Incidente
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? nomeRelator = null,Object? email = null,Object? telefone = null,Object? situacao = null,Object? resumo = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? nomeRelator = null,Object? email = null,Object? telefone = null,Object? situacao = null,Object? resumo = null,Object? data = null,}) {
   return _then(_Incidente(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,nomeRelator: null == nomeRelator ? _self.nomeRelator : nomeRelator // ignore: cast_nullable_to_non_nullable
@@ -153,7 +155,8 @@ as String,email: null == email ? _self.email : email // ignore: cast_nullable_to
 as String,telefone: null == telefone ? _self.telefone : telefone // ignore: cast_nullable_to_non_nullable
 as String,situacao: null == situacao ? _self.situacao : situacao // ignore: cast_nullable_to_non_nullable
 as IncidenteSituacao,resumo: null == resumo ? _self.resumo : resumo // ignore: cast_nullable_to_non_nullable
-as String,
+as String,data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+as DateTime,
   ));
 }
 

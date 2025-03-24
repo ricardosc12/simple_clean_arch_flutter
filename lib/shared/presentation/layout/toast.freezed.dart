@@ -70,7 +70,7 @@ class _$ToastInformationCopyWithImpl<$Res>
   return _then(_self.copyWith(
 toastType: null == toastType ? _self.toastType : toastType // ignore: cast_nullable_to_non_nullable
 as ToastType,message: null == message ? _self.message : message // ignore: cast_nullable_to_non_nullable
-as String,time: freezed == time ? _self.time : time // ignore: cast_nullable_to_non_nullable
+as String,time: freezed == time ? _self.time! : time // ignore: cast_nullable_to_non_nullable
 as DateTime?,id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String?,
   ));

@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CreateIncidenteDto {
 
- IncidenteSituacao get situacao; String get nomeRelator; String get email; String get telefone; String get resumo;
+ IncidenteSituacao get situacao; String get nomeRelator; String get email; String get telefone; String get resumo; DateTime get data;
 /// Create a copy of CreateIncidenteDto
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,16 +29,16 @@ $CreateIncidenteDtoCopyWith<CreateIncidenteDto> get copyWith => _$CreateIncident
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateIncidenteDto&&(identical(other.situacao, situacao) || other.situacao == situacao)&&(identical(other.nomeRelator, nomeRelator) || other.nomeRelator == nomeRelator)&&(identical(other.email, email) || other.email == email)&&(identical(other.telefone, telefone) || other.telefone == telefone)&&(identical(other.resumo, resumo) || other.resumo == resumo));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateIncidenteDto&&(identical(other.situacao, situacao) || other.situacao == situacao)&&(identical(other.nomeRelator, nomeRelator) || other.nomeRelator == nomeRelator)&&(identical(other.email, email) || other.email == email)&&(identical(other.telefone, telefone) || other.telefone == telefone)&&(identical(other.resumo, resumo) || other.resumo == resumo)&&(identical(other.data, data) || other.data == data));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,situacao,nomeRelator,email,telefone,resumo);
+int get hashCode => Object.hash(runtimeType,situacao,nomeRelator,email,telefone,resumo,data);
 
 @override
 String toString() {
-  return 'CreateIncidenteDto(situacao: $situacao, nomeRelator: $nomeRelator, email: $email, telefone: $telefone, resumo: $resumo)';
+  return 'CreateIncidenteDto(situacao: $situacao, nomeRelator: $nomeRelator, email: $email, telefone: $telefone, resumo: $resumo, data: $data)';
 }
 
 
@@ -49,7 +49,7 @@ abstract mixin class $CreateIncidenteDtoCopyWith<$Res>  {
   factory $CreateIncidenteDtoCopyWith(CreateIncidenteDto value, $Res Function(CreateIncidenteDto) _then) = _$CreateIncidenteDtoCopyWithImpl;
 @useResult
 $Res call({
- IncidenteSituacao situacao, String nomeRelator, String email, String telefone, String resumo
+ IncidenteSituacao situacao, String nomeRelator, String email, String telefone, String resumo, DateTime data
 });
 
 
@@ -66,14 +66,15 @@ class _$CreateIncidenteDtoCopyWithImpl<$Res>
 
 /// Create a copy of CreateIncidenteDto
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? situacao = null,Object? nomeRelator = null,Object? email = null,Object? telefone = null,Object? resumo = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? situacao = null,Object? nomeRelator = null,Object? email = null,Object? telefone = null,Object? resumo = null,Object? data = null,}) {
   return _then(_self.copyWith(
 situacao: null == situacao ? _self.situacao : situacao // ignore: cast_nullable_to_non_nullable
 as IncidenteSituacao,nomeRelator: null == nomeRelator ? _self.nomeRelator : nomeRelator // ignore: cast_nullable_to_non_nullable
 as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,telefone: null == telefone ? _self.telefone : telefone // ignore: cast_nullable_to_non_nullable
 as String,resumo: null == resumo ? _self.resumo : resumo // ignore: cast_nullable_to_non_nullable
-as String,
+as String,data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+as DateTime,
   ));
 }
 
@@ -84,7 +85,7 @@ as String,
 @JsonSerializable()
 
 class _CreateIncidenteDto implements CreateIncidenteDto {
-   _CreateIncidenteDto({required this.situacao, required this.nomeRelator, required this.email, required this.telefone, required this.resumo});
+   _CreateIncidenteDto({required this.situacao, required this.nomeRelator, required this.email, required this.telefone, required this.resumo, required this.data});
   factory _CreateIncidenteDto.fromJson(Map<String, dynamic> json) => _$CreateIncidenteDtoFromJson(json);
 
 @override final  IncidenteSituacao situacao;
@@ -92,6 +93,7 @@ class _CreateIncidenteDto implements CreateIncidenteDto {
 @override final  String email;
 @override final  String telefone;
 @override final  String resumo;
+@override final  DateTime data;
 
 /// Create a copy of CreateIncidenteDto
 /// with the given fields replaced by the non-null parameter values.
@@ -106,16 +108,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateIncidenteDto&&(identical(other.situacao, situacao) || other.situacao == situacao)&&(identical(other.nomeRelator, nomeRelator) || other.nomeRelator == nomeRelator)&&(identical(other.email, email) || other.email == email)&&(identical(other.telefone, telefone) || other.telefone == telefone)&&(identical(other.resumo, resumo) || other.resumo == resumo));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateIncidenteDto&&(identical(other.situacao, situacao) || other.situacao == situacao)&&(identical(other.nomeRelator, nomeRelator) || other.nomeRelator == nomeRelator)&&(identical(other.email, email) || other.email == email)&&(identical(other.telefone, telefone) || other.telefone == telefone)&&(identical(other.resumo, resumo) || other.resumo == resumo)&&(identical(other.data, data) || other.data == data));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,situacao,nomeRelator,email,telefone,resumo);
+int get hashCode => Object.hash(runtimeType,situacao,nomeRelator,email,telefone,resumo,data);
 
 @override
 String toString() {
-  return 'CreateIncidenteDto(situacao: $situacao, nomeRelator: $nomeRelator, email: $email, telefone: $telefone, resumo: $resumo)';
+  return 'CreateIncidenteDto(situacao: $situacao, nomeRelator: $nomeRelator, email: $email, telefone: $telefone, resumo: $resumo, data: $data)';
 }
 
 
@@ -126,7 +128,7 @@ abstract mixin class _$CreateIncidenteDtoCopyWith<$Res> implements $CreateIncide
   factory _$CreateIncidenteDtoCopyWith(_CreateIncidenteDto value, $Res Function(_CreateIncidenteDto) _then) = __$CreateIncidenteDtoCopyWithImpl;
 @override @useResult
 $Res call({
- IncidenteSituacao situacao, String nomeRelator, String email, String telefone, String resumo
+ IncidenteSituacao situacao, String nomeRelator, String email, String telefone, String resumo, DateTime data
 });
 
 
@@ -143,14 +145,15 @@ class __$CreateIncidenteDtoCopyWithImpl<$Res>
 
 /// Create a copy of CreateIncidenteDto
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? situacao = null,Object? nomeRelator = null,Object? email = null,Object? telefone = null,Object? resumo = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? situacao = null,Object? nomeRelator = null,Object? email = null,Object? telefone = null,Object? resumo = null,Object? data = null,}) {
   return _then(_CreateIncidenteDto(
 situacao: null == situacao ? _self.situacao : situacao // ignore: cast_nullable_to_non_nullable
 as IncidenteSituacao,nomeRelator: null == nomeRelator ? _self.nomeRelator : nomeRelator // ignore: cast_nullable_to_non_nullable
 as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,telefone: null == telefone ? _self.telefone : telefone // ignore: cast_nullable_to_non_nullable
 as String,resumo: null == resumo ? _self.resumo : resumo // ignore: cast_nullable_to_non_nullable
-as String,
+as String,data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+as DateTime,
   ));
 }
 
