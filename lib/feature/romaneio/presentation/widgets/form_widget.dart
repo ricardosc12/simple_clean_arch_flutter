@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/feature/romaneio/providers/docs_provider.dart';
 import 'package:flutter_application_1/feature/romaneio/providers/form_controller.dart';
 import 'package:flutter_application_1/shared/domain/dto/doc.dart';
 import 'package:flutter_application_1/shared/domain/models/doc.dart';
 import 'package:flutter_application_1/shared/presentation/form_controller.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class DocForm extends StatelessWidget {
   final FormController form;
@@ -77,13 +75,3 @@ class DocForm extends StatelessWidget {
     );
   }
 }
-
-final formDocProvider = Provider.family<DocFormController, String?>((ref, ar) {
-  final docs = ref.watch(docsProvider.notifier);
-
-  return DocFormController(
-    onSuccess:
-        (doc) =>
-            ar != null ? docs.editDoc(ar: ar, doc: doc) : docs.addDoc(doc: doc),
-  );
-}, dependencies: docsProvider.allTransitiveDependencies);

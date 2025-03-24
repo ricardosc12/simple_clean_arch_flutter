@@ -1,0 +1,20 @@
+{
+	"f_form_test": {
+		"prefix": "f_form_test",
+		"body": [
+			"  test(\"Test $1Form\", () {",
+			"    final dto = $1Dto(date: DateTime.now(), name: \"Teste\", num: 100);",
+			"    ",
+			"    final tester = FormTestKit(",
+			"      validators: $1Schema.validators,",
+			"      fromJson: $1Dto.fromJson,",
+			"      toJson: dto.toJson,",
+			"      fields: $1Fields.values,",
+			"    );",
+			"",
+			"    tester.test();",
+			"  });"
+		],
+		"description": ""
+	}
+}

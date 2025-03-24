@@ -75,22 +75,6 @@ class HomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [IncidenteScreen]
-class IncidenteRoute extends PageRouteInfo<void> {
-  const IncidenteRoute({List<PageRouteInfo>? children})
-    : super(IncidenteRoute.name, initialChildren: children);
-
-  static const String name = 'IncidenteRoute';
-
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      return const IncidenteScreen();
-    },
-  );
-}
-
-/// generated route for
 /// [MainLayoutPage]
 class MainLayoutRoute extends PageRouteInfo<void> {
   const MainLayoutRoute({List<PageRouteInfo>? children})

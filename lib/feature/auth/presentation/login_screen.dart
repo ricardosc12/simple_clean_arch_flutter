@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/feature/auth/presentation/widgets/user_form.dart';
 import 'package:flutter_application_1/feature/auth/providers/auth_provider.dart';
 import 'package:flutter_application_1/feature/auth/providers/auth_state.dart';
+import 'package:flutter_application_1/feature/auth/providers/user_form.dart';
 import 'package:flutter_application_1/routes/app.dart';
 import 'package:flutter_application_1/shared/presentation/form_controller.dart';
 import 'package:flutter_application_1/shared/presentation/layout/notify_panel/providers.dart';
@@ -10,16 +11,6 @@ import 'package:flutter_application_1/shared/presentation/layout/paper.dart';
 import 'package:flutter_application_1/shared/presentation/layout/toast.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uuid/uuid.dart';
-
-class StateForm extends ConsumerWidget {
-  const StateForm({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(authProvider);
-    return Text("State: $state");
-  }
-}
 
 @RoutePage()
 class HomeScreen extends ConsumerWidget {
@@ -57,7 +48,6 @@ class HomeScreen extends ConsumerWidget {
                         },
                     },
               ),
-              StateForm(),
               // ProviderScope(
               //   overrides: [formUserProvider, authProvider],
               //   child: Consumer(
@@ -83,6 +73,8 @@ class HomeScreen extends ConsumerWidget {
                       return const Text("User Init");
                     case Loading():
                       return const Text("User Loading");
+                    case Refreshed():
+                      return const Text("User Refreshed");
                   }
                 }(),
               ),

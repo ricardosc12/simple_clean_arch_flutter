@@ -1,0 +1,24 @@
+{
+    "f_form_dto": {
+        "prefix": "f_form_dto",
+        "body": [
+            "import 'package:freezed_annotation/freezed_annotation.dart';",
+            "",
+            "part '$TM_FILENAME_BASE.freezed.dart';",
+            "part '$TM_FILENAME_BASE.g.dart';",
+            "",
+            "@freezed",
+            "abstract class $1Dto with _$$1Dto {",
+            "  factory $1Dto({",
+            "    required String arg1,",
+            "    required int arg2,",
+            "    required DateTime arg3,",
+            "  }) = _$1Dto;",
+            "",
+            "  factory $1Dto.fromJson(Map<String, dynamic> json) =>",
+            "      _$$1DtoFromJson(json);",
+            "}"
+        ],
+        "description": ""
+    }
+}

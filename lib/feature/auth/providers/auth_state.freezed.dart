@@ -24,6 +24,10 @@ AuthState _$AuthStateFromJson(
           return Logged.fromJson(
             json
           );
+                case 'refreshed':
+          return Refreshed.fromJson(
+            json
+          );
                 case 'loading':
           return Loading.fromJson(
             json
@@ -165,7 +169,7 @@ $Res call({
 });
 
 
-
+$UserCopyWith<$Res> get user;
 
 }
 /// @nodoc
@@ -185,7 +189,98 @@ as User,
   ));
 }
 
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$UserCopyWith<$Res> get user {
+  
+  return $UserCopyWith<$Res>(_self.user, (value) {
+    return _then(_self.copyWith(user: value));
+  });
+}
+}
 
+/// @nodoc
+@JsonSerializable()
+
+class Refreshed implements AuthState {
+  const Refreshed({required this.refreshData, final  String? $type}): $type = $type ?? 'refreshed';
+  factory Refreshed.fromJson(Map<String, dynamic> json) => _$RefreshedFromJson(json);
+
+ final  RefreshData refreshData;
+
+@JsonKey(name: 'runtimeType')
+final String $type;
+
+
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$RefreshedCopyWith<Refreshed> get copyWith => _$RefreshedCopyWithImpl<Refreshed>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$RefreshedToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Refreshed&&(identical(other.refreshData, refreshData) || other.refreshData == refreshData));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,refreshData);
+
+@override
+String toString() {
+  return 'AuthState.refreshed(refreshData: $refreshData)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $RefreshedCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
+  factory $RefreshedCopyWith(Refreshed value, $Res Function(Refreshed) _then) = _$RefreshedCopyWithImpl;
+@useResult
+$Res call({
+ RefreshData refreshData
+});
+
+
+$RefreshDataCopyWith<$Res> get refreshData;
+
+}
+/// @nodoc
+class _$RefreshedCopyWithImpl<$Res>
+    implements $RefreshedCopyWith<$Res> {
+  _$RefreshedCopyWithImpl(this._self, this._then);
+
+  final Refreshed _self;
+  final $Res Function(Refreshed) _then;
+
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? refreshData = null,}) {
+  return _then(Refreshed(
+refreshData: null == refreshData ? _self.refreshData : refreshData // ignore: cast_nullable_to_non_nullable
+as RefreshData,
+  ));
+}
+
+/// Create a copy of AuthState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$RefreshDataCopyWith<$Res> get refreshData {
+  
+  return $RefreshDataCopyWith<$Res>(_self.refreshData, (value) {
+    return _then(_self.copyWith(refreshData: value));
+  });
+}
 }
 
 /// @nodoc
