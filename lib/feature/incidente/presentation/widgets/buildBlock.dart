@@ -8,7 +8,7 @@ Widget buildBlock(
   Color colorText,
 ) {
   return Container(
-    width: 200,
+    width: 150,
     padding: const EdgeInsets.all(12),
     decoration: BoxDecoration(
       color: colorBackground,

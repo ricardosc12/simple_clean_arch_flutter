@@ -17,22 +17,18 @@ class IncidenteScreen extends ConsumerWidget {
     final incidenteState = ref.watch(incidentesProvider);
     final incidentes = incidenteState.incidentes;
 
-    final andamentoCount =
-        incidentes
-            .where((e) => e.situacao == IncidenteSituacao.andamento)
-            .length;
-    final finalizadoCount =
-        incidentes
-            .where((e) => e.situacao == IncidenteSituacao.finalizado)
-            .length;
-    final impedidoCount =
-        incidentes
-            .where((e) => e.situacao == IncidenteSituacao.impedido)
-            .length;
-    final pendenteCount =
-        incidentes
-            .where((e) => e.situacao == IncidenteSituacao.pendente)
-            .length;
+    final andamentoCount = incidentes
+        .where((e) => e.situacao == IncidenteSituacao.andamento)
+        .length;
+    final finalizadoCount = incidentes
+        .where((e) => e.situacao == IncidenteSituacao.finalizado)
+        .length;
+    final impedidoCount = incidentes
+        .where((e) => e.situacao == IncidenteSituacao.impedido)
+        .length;
+    final pendenteCount = incidentes
+        .where((e) => e.situacao == IncidenteSituacao.pendente)
+        .length;
 
     return Scaffold(
       appBar: DefaultAppBar(),
@@ -56,8 +52,9 @@ class IncidenteScreen extends ConsumerWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              child: Wrap(
+                spacing: 5,
+                runSpacing: 5,
                 children: [
                   buildBlock(
                     'Em andamento',
@@ -86,17 +83,16 @@ class IncidenteScreen extends ConsumerWidget {
                 ],
               ),
             ),
-            //lista de incidentes
+            // Lista de incidentes
             Expanded(
               child: ListView.builder(
                 itemCount: ref.watch(
                   incidentesProvider.select((e) => e.incidentes.length),
                 ),
-                itemBuilder:
-                    (_, index) => ProviderScope(
-                      overrides: [indexProvider.overrideWith((_) => index)],
-                      child: IncidenteWidgetWrapper(),
-                    ),
+                itemBuilder: (_, index) => ProviderScope(
+                  overrides: [indexProvider.overrideWith((_) => index)],
+                  child: IncidenteWidgetWrapper(),
+                ),
               ),
             ),
           ],
