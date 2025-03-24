@@ -1,41 +1,29 @@
 import 'package:flutter_application_1/shared/domain/models/romaneio.dart';
+import 'package:flutter_application_1/shared/utils/enum.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'doc.freezed.dart';
 part 'doc.g.dart';
 
 @JsonEnum()
-enum DocStatus {
+enum DocStatus with EnumUpperStatus {
   @JsonValue("APP")
-  app,
+  app("App"),
   @JsonValue("COLETA")
-  coleta,
+  coleta("Coleta"),
   @JsonValue("ENTREGA")
-  entrega,
+  entrega("Entrega"),
   @JsonValue("REDESPACHO")
-  redespacho,
+  redespacho("Redespacho"),
   @JsonValue("TRANSBORDO")
-  transbordo,
+  transbordo("Transbordo"),
   @JsonValue("TRANSFERENCIA")
-  transferencia;
+  transferencia("Transferência");
 
-  String get itemValue => name.toUpperCase();
-  String get itemLabel {
-    switch (this) {
-      case app:
-        return "App";
-      case coleta:
-        return "Coleta";
-      case entrega:
-        return "Entrega";
-      case redespacho:
-        return "Redespacho";
-      case transbordo:
-        return "Transbordo";
-      case transferencia:
-        return "Transferência";
-    }
-  }
+  const DocStatus(this.itemLabel);
+
+  @override
+  final String itemLabel;
 }
 
 @freezed
@@ -53,4 +41,3 @@ abstract class Doc with _$Doc {
 
   factory Doc.fromJson(Map<String, dynamic> json) => _$DocFromJson(json);
 }
-

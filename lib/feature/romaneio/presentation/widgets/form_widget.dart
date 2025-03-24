@@ -3,6 +3,7 @@ import 'package:flutter_application_1/feature/romaneio/providers/form_controller
 import 'package:flutter_application_1/shared/domain/dto/doc.dart';
 import 'package:flutter_application_1/shared/domain/models/doc.dart';
 import 'package:flutter_application_1/shared/presentation/form_controller.dart';
+import 'package:flutter_application_1/shared/utils/form.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 class DocForm extends StatelessWidget {
@@ -26,15 +27,7 @@ class DocForm extends StatelessWidget {
         spacing: 10,
         children: [
           FormBuilderDropdown(
-            items:
-                DocStatus.values
-                    .map(
-                      (e) => DropdownMenuItem(
-                        value: e.itemValue,
-                        child: Text(e.itemLabel),
-                      ),
-                    )
-                    .toList(),
+            items: FormExtensions.toDropdownItems(DocStatus.values),
             name: DocFields.status.name,
             decoration: const InputDecoration(labelText: "Status"),
             validator: DocSchema.validator(DocFields.status),

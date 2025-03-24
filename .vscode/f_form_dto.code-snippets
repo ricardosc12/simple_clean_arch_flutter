@@ -1,6 +1,6 @@
 {
-    "f_form_dto": {
-        "prefix": "f_form_dto",
+    "f_dto": {
+        "prefix": "f_dto",
         "body": [
             "import 'package:freezed_annotation/freezed_annotation.dart';",
             "",
@@ -17,6 +17,27 @@
             "",
             "  factory $1Dto.fromJson(Map<String, dynamic> json) =>",
             "      _$$1DtoFromJson(json);",
+            "}"
+        ],
+        "description": ""
+    },
+    "f_dto_enum": {
+        "prefix": "f_dto_enum",
+        "body": [
+            "import 'package:flutter_application_1/shared/utils/enum.dart';",
+            "import 'package:freezed_annotation/freezed_annotation.dart';",
+            "",
+            "@JsonEnum()",
+            "enum $1 with EnumUpperStatus {",
+            "  @JsonValue(\"SUCCESS\")",
+            "  success(\"Sucesso\"),",
+            "  @JsonValue(\"ERROR\")",
+            "  error(\"Erro\");",
+            "",
+            "  const $1(this.itemLabel);",
+            "",
+            "  @override",
+            "  final String itemLabel;",
             "}"
         ],
         "description": ""
