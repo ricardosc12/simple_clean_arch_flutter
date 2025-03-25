@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-enum FormStatus { submitted, invalid, error }
+enum FormStatus { submitted, invalid, error, success, failure }
 
 abstract class FormController<T> {
   final GlobalKey<FormBuilderState> formKey = GlobalKey<FormBuilderState>();

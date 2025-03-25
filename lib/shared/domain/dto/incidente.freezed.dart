@@ -14,42 +14,42 @@ part of 'incidente.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$IncidenteFormDto {
+mixin _$CreateIncidenteDto {
 
- String get arg1; int get arg2; DateTime get arg3;
-/// Create a copy of IncidenteFormDto
+ IncidenteSituacao get situacao; String get nomeRelator; String get email; String get telefone; String get resumo; DateTime get data;
+/// Create a copy of CreateIncidenteDto
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$IncidenteFormDtoCopyWith<IncidenteFormDto> get copyWith => _$IncidenteFormDtoCopyWithImpl<IncidenteFormDto>(this as IncidenteFormDto, _$identity);
+$CreateIncidenteDtoCopyWith<CreateIncidenteDto> get copyWith => _$CreateIncidenteDtoCopyWithImpl<CreateIncidenteDto>(this as CreateIncidenteDto, _$identity);
 
-  /// Serializes this IncidenteFormDto to a JSON map.
+  /// Serializes this CreateIncidenteDto to a JSON map.
   Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is IncidenteFormDto&&(identical(other.arg1, arg1) || other.arg1 == arg1)&&(identical(other.arg2, arg2) || other.arg2 == arg2)&&(identical(other.arg3, arg3) || other.arg3 == arg3));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateIncidenteDto&&(identical(other.situacao, situacao) || other.situacao == situacao)&&(identical(other.nomeRelator, nomeRelator) || other.nomeRelator == nomeRelator)&&(identical(other.email, email) || other.email == email)&&(identical(other.telefone, telefone) || other.telefone == telefone)&&(identical(other.resumo, resumo) || other.resumo == resumo)&&(identical(other.data, data) || other.data == data));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,arg1,arg2,arg3);
+int get hashCode => Object.hash(runtimeType,situacao,nomeRelator,email,telefone,resumo,data);
 
 @override
 String toString() {
-  return 'IncidenteFormDto(arg1: $arg1, arg2: $arg2, arg3: $arg3)';
+  return 'CreateIncidenteDto(situacao: $situacao, nomeRelator: $nomeRelator, email: $email, telefone: $telefone, resumo: $resumo, data: $data)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $IncidenteFormDtoCopyWith<$Res>  {
-  factory $IncidenteFormDtoCopyWith(IncidenteFormDto value, $Res Function(IncidenteFormDto) _then) = _$IncidenteFormDtoCopyWithImpl;
+abstract mixin class $CreateIncidenteDtoCopyWith<$Res>  {
+  factory $CreateIncidenteDtoCopyWith(CreateIncidenteDto value, $Res Function(CreateIncidenteDto) _then) = _$CreateIncidenteDtoCopyWithImpl;
 @useResult
 $Res call({
- String arg1, int arg2, DateTime arg3
+ IncidenteSituacao situacao, String nomeRelator, String email, String telefone, String resumo, DateTime data
 });
 
 
@@ -57,20 +57,23 @@ $Res call({
 
 }
 /// @nodoc
-class _$IncidenteFormDtoCopyWithImpl<$Res>
-    implements $IncidenteFormDtoCopyWith<$Res> {
-  _$IncidenteFormDtoCopyWithImpl(this._self, this._then);
+class _$CreateIncidenteDtoCopyWithImpl<$Res>
+    implements $CreateIncidenteDtoCopyWith<$Res> {
+  _$CreateIncidenteDtoCopyWithImpl(this._self, this._then);
 
-  final IncidenteFormDto _self;
-  final $Res Function(IncidenteFormDto) _then;
+  final CreateIncidenteDto _self;
+  final $Res Function(CreateIncidenteDto) _then;
 
-/// Create a copy of IncidenteFormDto
+/// Create a copy of CreateIncidenteDto
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? arg1 = null,Object? arg2 = null,Object? arg3 = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? situacao = null,Object? nomeRelator = null,Object? email = null,Object? telefone = null,Object? resumo = null,Object? data = null,}) {
   return _then(_self.copyWith(
-arg1: null == arg1 ? _self.arg1 : arg1 // ignore: cast_nullable_to_non_nullable
-as String,arg2: null == arg2 ? _self.arg2 : arg2 // ignore: cast_nullable_to_non_nullable
-as int,arg3: null == arg3 ? _self.arg3 : arg3 // ignore: cast_nullable_to_non_nullable
+situacao: null == situacao ? _self.situacao : situacao // ignore: cast_nullable_to_non_nullable
+as IncidenteSituacao,nomeRelator: null == nomeRelator ? _self.nomeRelator : nomeRelator // ignore: cast_nullable_to_non_nullable
+as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as String,telefone: null == telefone ? _self.telefone : telefone // ignore: cast_nullable_to_non_nullable
+as String,resumo: null == resumo ? _self.resumo : resumo // ignore: cast_nullable_to_non_nullable
+as String,data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
 as DateTime,
   ));
 }
@@ -80,49 +83,51 @@ as DateTime,
 
 /// @nodoc
 @JsonSerializable()
+class _CreateIncidenteDto implements CreateIncidenteDto {
+   _CreateIncidenteDto({required this.situacao, required this.nomeRelator, required this.email, required this.telefone, required this.resumo, required this.data});
+  factory _CreateIncidenteDto.fromJson(Map<String, dynamic> json) => _$CreateIncidenteDtoFromJson(json);
 
-class _IncidenteFormDto implements IncidenteFormDto {
-   _IncidenteFormDto({required this.arg1, required this.arg2, required this.arg3});
-  factory _IncidenteFormDto.fromJson(Map<String, dynamic> json) => _$IncidenteFormDtoFromJson(json);
+@override final  IncidenteSituacao situacao;
+@override final  String nomeRelator;
+@override final  String email;
+@override final  String telefone;
+@override final  String resumo;
+@override final  DateTime data;
 
-@override final  String arg1;
-@override final  int arg2;
-@override final  DateTime arg3;
-
-/// Create a copy of IncidenteFormDto
+/// Create a copy of CreateIncidenteDto
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$IncidenteFormDtoCopyWith<_IncidenteFormDto> get copyWith => __$IncidenteFormDtoCopyWithImpl<_IncidenteFormDto>(this, _$identity);
+_$CreateIncidenteDtoCopyWith<_CreateIncidenteDto> get copyWith => __$CreateIncidenteDtoCopyWithImpl<_CreateIncidenteDto>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$IncidenteFormDtoToJson(this, );
+  return _$CreateIncidenteDtoToJson(this, );
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _IncidenteFormDto&&(identical(other.arg1, arg1) || other.arg1 == arg1)&&(identical(other.arg2, arg2) || other.arg2 == arg2)&&(identical(other.arg3, arg3) || other.arg3 == arg3));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateIncidenteDto&&(identical(other.situacao, situacao) || other.situacao == situacao)&&(identical(other.nomeRelator, nomeRelator) || other.nomeRelator == nomeRelator)&&(identical(other.email, email) || other.email == email)&&(identical(other.telefone, telefone) || other.telefone == telefone)&&(identical(other.resumo, resumo) || other.resumo == resumo)&&(identical(other.data, data) || other.data == data));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,arg1,arg2,arg3);
+int get hashCode => Object.hash(runtimeType,situacao,nomeRelator,email,telefone,resumo,data);
 
 @override
 String toString() {
-  return 'IncidenteFormDto(arg1: $arg1, arg2: $arg2, arg3: $arg3)';
+  return 'CreateIncidenteDto(situacao: $situacao, nomeRelator: $nomeRelator, email: $email, telefone: $telefone, resumo: $resumo, data: $data)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$IncidenteFormDtoCopyWith<$Res> implements $IncidenteFormDtoCopyWith<$Res> {
-  factory _$IncidenteFormDtoCopyWith(_IncidenteFormDto value, $Res Function(_IncidenteFormDto) _then) = __$IncidenteFormDtoCopyWithImpl;
+abstract mixin class _$CreateIncidenteDtoCopyWith<$Res> implements $CreateIncidenteDtoCopyWith<$Res> {
+  factory _$CreateIncidenteDtoCopyWith(_CreateIncidenteDto value, $Res Function(_CreateIncidenteDto) _then) = __$CreateIncidenteDtoCopyWithImpl;
 @override @useResult
 $Res call({
- String arg1, int arg2, DateTime arg3
+ IncidenteSituacao situacao, String nomeRelator, String email, String telefone, String resumo, DateTime data
 });
 
 
@@ -130,20 +135,23 @@ $Res call({
 
 }
 /// @nodoc
-class __$IncidenteFormDtoCopyWithImpl<$Res>
-    implements _$IncidenteFormDtoCopyWith<$Res> {
-  __$IncidenteFormDtoCopyWithImpl(this._self, this._then);
+class __$CreateIncidenteDtoCopyWithImpl<$Res>
+    implements _$CreateIncidenteDtoCopyWith<$Res> {
+  __$CreateIncidenteDtoCopyWithImpl(this._self, this._then);
 
-  final _IncidenteFormDto _self;
-  final $Res Function(_IncidenteFormDto) _then;
+  final _CreateIncidenteDto _self;
+  final $Res Function(_CreateIncidenteDto) _then;
 
-/// Create a copy of IncidenteFormDto
+/// Create a copy of CreateIncidenteDto
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? arg1 = null,Object? arg2 = null,Object? arg3 = null,}) {
-  return _then(_IncidenteFormDto(
-arg1: null == arg1 ? _self.arg1 : arg1 // ignore: cast_nullable_to_non_nullable
-as String,arg2: null == arg2 ? _self.arg2 : arg2 // ignore: cast_nullable_to_non_nullable
-as int,arg3: null == arg3 ? _self.arg3 : arg3 // ignore: cast_nullable_to_non_nullable
+@override @pragma('vm:prefer-inline') $Res call({Object? situacao = null,Object? nomeRelator = null,Object? email = null,Object? telefone = null,Object? resumo = null,Object? data = null,}) {
+  return _then(_CreateIncidenteDto(
+situacao: null == situacao ? _self.situacao : situacao // ignore: cast_nullable_to_non_nullable
+as IncidenteSituacao,nomeRelator: null == nomeRelator ? _self.nomeRelator : nomeRelator // ignore: cast_nullable_to_non_nullable
+as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
+as String,telefone: null == telefone ? _self.telefone : telefone // ignore: cast_nullable_to_non_nullable
+as String,resumo: null == resumo ? _self.resumo : resumo // ignore: cast_nullable_to_non_nullable
+as String,data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
 as DateTime,
   ));
 }

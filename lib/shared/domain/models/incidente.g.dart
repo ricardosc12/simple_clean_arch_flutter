@@ -6,22 +6,23 @@ part of 'incidente.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_CreateIncidenteDto _$CreateIncidenteDtoFromJson(Map<String, dynamic> json) =>
-    _CreateIncidenteDto(
-      situacao: $enumDecode(_$IncidenteSituacaoEnumMap, json['situacao']),
-      nomeRelator: json['nomeRelator'] as String,
-      email: json['email'] as String,
-      telefone: json['telefone'] as String,
-      resumo: json['resumo'] as String,
-      data: DateTime.parse(json['data'] as String),
-    );
+_Incidente _$IncidenteFromJson(Map<String, dynamic> json) => _Incidente(
+  id: json['id'] as String,
+  nomeRelator: json['nomeRelator'] as String,
+  email: json['email'] as String,
+  telefone: json['telefone'] as String,
+  situacao: $enumDecode(_$IncidenteSituacaoEnumMap, json['situacao']),
+  resumo: json['resumo'] as String,
+  data: DateTime.parse(json['data'] as String),
+);
 
-Map<String, dynamic> _$CreateIncidenteDtoToJson(_CreateIncidenteDto instance) =>
+Map<String, dynamic> _$IncidenteToJson(_Incidente instance) =>
     <String, dynamic>{
-      'situacao': _$IncidenteSituacaoEnumMap[instance.situacao]!,
+      'id': instance.id,
       'nomeRelator': instance.nomeRelator,
       'email': instance.email,
       'telefone': instance.telefone,
+      'situacao': _$IncidenteSituacaoEnumMap[instance.situacao]!,
       'resumo': instance.resumo,
       'data': instance.data.toIso8601String(),
     };
