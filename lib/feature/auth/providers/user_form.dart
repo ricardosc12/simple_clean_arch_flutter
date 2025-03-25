@@ -1,9 +1,7 @@
-import 'package:flutter_application_1/feature/auth/providers/auth_provider.dart';
 import 'package:flutter_application_1/shared/domain/dto/form_schema.dart';
 import 'package:flutter_application_1/shared/domain/dto/login_user.dart';
 import 'package:flutter_application_1/shared/log/log_service.dart';
 import 'package:flutter_application_1/shared/presentation/form_controller.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:luthor/luthor.dart';
 
 enum UserFields { usuario, senha }
@@ -47,8 +45,3 @@ class UserFormController extends FormController<LoginUserDto> {
     }
   }
 }
-
-final formUserProvider = Provider<UserFormController>((ref) {
-  final auth = ref.watch(authProvider.notifier);
-  return UserFormController(onSuccess: auth.login);
-}, dependencies: authProvider.allTransitiveDependencies);
