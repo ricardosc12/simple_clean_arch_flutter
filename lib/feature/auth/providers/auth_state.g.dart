@@ -23,6 +23,18 @@ Map<String, dynamic> _$LoggedToJson(Logged instance) => <String, dynamic>{
   'runtimeType': instance.$type,
 };
 
+Refreshed _$RefreshedFromJson(Map<String, dynamic> json) => Refreshed(
+  refreshData: RefreshData.fromJson(
+    json['refreshData'] as Map<String, dynamic>,
+  ),
+  $type: json['runtimeType'] as String?,
+);
+
+Map<String, dynamic> _$RefreshedToJson(Refreshed instance) => <String, dynamic>{
+  'refreshData': instance.refreshData,
+  'runtimeType': instance.$type,
+};
+
 Loading _$LoadingFromJson(Map<String, dynamic> json) =>
     Loading($type: json['runtimeType'] as String?);
 

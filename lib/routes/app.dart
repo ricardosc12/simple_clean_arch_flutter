@@ -55,6 +55,7 @@ class AppRouter extends RootStackRouter {
               ),
             ]
         ),
+
         AutoRoute(
           path: "dashboard",
           page: DashNavigationRoute.page,

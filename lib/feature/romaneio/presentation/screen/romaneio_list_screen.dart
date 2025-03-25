@@ -44,14 +44,6 @@ class RomaneioListScreen extends ConsumerWidget {
                         },
                         child: const Text("Adicionar Doc"),
                       ),
-                      ElevatedButton(
-                        onPressed: () {
-                          ref
-                              .read(routeProvider)
-                              .navigate(const IncidenteRoute());
-                        },
-                        child: const Text("Incidente Page"),
-                      ),
                     ],
                   ),
                   Consumer(

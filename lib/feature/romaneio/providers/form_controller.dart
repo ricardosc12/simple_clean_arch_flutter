@@ -1,30 +1,36 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_application_1/feature/romaneio/providers/docs_provider.dart';
 import 'package:flutter_application_1/shared/domain/dto/doc.dart';
+import 'package:flutter_application_1/shared/domain/dto/form_schema.dart';
 import 'package:flutter_application_1/shared/domain/models/doc.dart';
 import 'package:flutter_application_1/shared/log/log_service.dart';
 import 'package:flutter_application_1/shared/presentation/form_controller.dart';
-import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:flutter_application_1/shared/utils/validation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:luthor/luthor.dart';
 
 enum DocFields { status, destinatario, remetente }
 
 abstract class DocSchema {
-  static final Map<DocFields, FormFieldValidator<dynamic>> validators = {
-    DocFields.status: FormBuilderValidators.compose([
-      FormBuilderValidators.required(errorText: "Selecione um status"),
-      FormBuilderValidators.containsElement(
-        DocStatus.values.map((e) => e.itemValue).toList(),
-      ),
-    ]),
-    DocFields.destinatario: FormBuilderValidators.compose([
-      FormBuilderValidators.required(errorText: "Destinatário obrigatória"),
-    ]),
-    DocFields.remetente: FormBuilderValidators.compose([
-      FormBuilderValidators.required(errorText: "Remetente obrigatória"),
-    ]),
+  static final Map<DocFields, Validator> validators = {
+    DocFields.status: l
+        .string()
+        .regex(
+          FormValidations.inEnum(DocStatus.values),
+          message: "Status incorreto",
+        )
+        .required(message: "Status obrigatório"),
+    DocFields.destinatario: l
+        .string(message: "Destinatário deve ser uma string")
+        .min(1, message: "Destinatário obrigatório")
+        .required(message: "Destinatário obrigatório"),
+    DocFields.remetente: l
+        .string(message: "Remetente deve ser uma string")
+        .min(1, message: "Remetente obrigatório")
+        .required(message: "Remetente obrigatório"),
   };
 
-  static FormFieldValidator<dynamic>? validator(DocFields field) {
-    return validators[field];
+  static FormValidation? validator(DocFields field) {
+    return formValidator(validators[field]);
   }
 }
 
@@ -42,15 +48,7 @@ class DocFormController extends FormController<CreateDocDto> {
 
       final values = state.value;
 
-      onSuccess(
-        CreateDocDto(
-          status: DocStatus.values.byName(
-            values[DocFields.status.name].toString().toLowerCase(),
-          ),
-          destinatario: values[DocFields.destinatario.name],
-          remetente: values[DocFields.remetente.name],
-        ),
-      );
+      onSuccess(CreateDocDto.fromJson(values));
 
       return FormStatus.submitted;
     } catch (e) {
@@ -59,3 +57,13 @@ class DocFormController extends FormController<CreateDocDto> {
     }
   }
 }
+
+final formDocProvider = Provider.family<DocFormController, String?>((ref, ar) {
+  final docs = ref.watch(docsProvider.notifier);
+
+  return DocFormController(
+    onSuccess:
+        (doc) =>
+            ar != null ? docs.editDoc(ar: ar, doc: doc) : docs.addDoc(doc: doc),
+  );
+}, dependencies: docsProvider.allTransitiveDependencies);

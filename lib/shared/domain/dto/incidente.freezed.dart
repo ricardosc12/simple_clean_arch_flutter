@@ -83,7 +83,6 @@ as DateTime,
 
 /// @nodoc
 @JsonSerializable()
-
 class _CreateIncidenteDto implements CreateIncidenteDto {
    _CreateIncidenteDto({required this.situacao, required this.nomeRelator, required this.email, required this.telefone, required this.resumo, required this.data});
   factory _CreateIncidenteDto.fromJson(Map<String, dynamic> json) => _$CreateIncidenteDtoFromJson(json);

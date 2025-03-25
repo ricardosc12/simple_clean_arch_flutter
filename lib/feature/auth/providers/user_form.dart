@@ -1,25 +1,27 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_application_1/feature/auth/providers/auth_provider.dart';
+import 'package:flutter_application_1/shared/domain/dto/form_schema.dart';
 import 'package:flutter_application_1/shared/domain/dto/login_user.dart';
 import 'package:flutter_application_1/shared/log/log_service.dart';
 import 'package:flutter_application_1/shared/presentation/form_controller.dart';
-import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:luthor/luthor.dart';
 
-enum UserFields { login, password }
+enum UserFields { usuario, senha }
 
 abstract class UserSchema {
-  static final Map<UserFields, FormFieldValidator<String?>> validators = {
-    // UserFields.login: FormBuilderValidators.compose([
-    //   FormBuilderValidators.required(errorText: "CPF obrigatório"),
-    //   FormBuilderValidators.min(0, errorText: "CPF obrigatório"),
-    // ]),
-    UserFields.password: FormBuilderValidators.compose([
-      FormBuilderValidators.required(errorText: "Senha obrigatória"),
-      FormBuilderValidators.min(0, errorText: "Senha obrigatória"),
-    ]),
+  static final Map<UserFields, Validator> validators = {
+    UserFields.usuario: l
+        .string(message: "CPF deve ser uma string")
+        .min(1, message: "CPF obrigatório")
+        .required(message: "CPF obrigatório"),
+    UserFields.senha: l
+        .string(message: "Senha deve ser uma string")
+        .min(1, message: "CPF obrigatório")
+        .required(message: "Senha obrigatória"),
   };
 
-  static FormFieldValidator<String?>? validator(UserFields field) {
-    return validators[field];
+  static FormValidation? validator(UserFields field) {
+    return formValidator(validators[field]);
   }
 }
 
@@ -37,12 +39,7 @@ class UserFormController extends FormController<LoginUserDto> {
 
       final values = state.value;
 
-      onSuccess(
-        LoginUserDto(
-          usuario: values[UserFields.login.name],
-          senha: values[UserFields.password.name],
-        ),
-      );
+      onSuccess(LoginUserDto.fromJson(values));
       return FormStatus.submitted;
     } catch (e) {
       LogService.logger.error(e);
@@ -50,3 +47,8 @@ class UserFormController extends FormController<LoginUserDto> {
     }
   }
 }
+
+final formUserProvider = Provider<UserFormController>((ref) {
+  final auth = ref.watch(authProvider.notifier);
+  return UserFormController(onSuccess: auth.login);
+}, dependencies: authProvider.allTransitiveDependencies);

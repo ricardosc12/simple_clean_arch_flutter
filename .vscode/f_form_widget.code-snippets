@@ -53,12 +53,6 @@
 			"    );",
 			"  }",
 			"}",
-			"",
-			"final form$1Provider = Provider<$1FormController>((ref) {",
-			"  final auth = ref.watch(authProvider.notifier);",
-			"  return $1FormController(onSuccess: auth.login);",
-			"}, dependencies: authProvider.allTransitiveDependencies);",
-			""
 		],
 		"description": "Form Widget"
 	}

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/feature/romaneio/providers/docs_provider.dart';
 import 'package:flutter_application_1/feature/romaneio/providers/form_controller.dart';
 import 'package:flutter_application_1/shared/domain/dto/doc.dart';
 import 'package:flutter_application_1/shared/domain/models/doc.dart';
 import 'package:flutter_application_1/shared/presentation/form_controller.dart';
+import 'package:flutter_application_1/shared/utils/form.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class DocForm extends StatelessWidget {
   final FormController form;
@@ -28,15 +27,7 @@ class DocForm extends StatelessWidget {
         spacing: 10,
         children: [
           FormBuilderDropdown(
-            items:
-                DocStatus.values
-                    .map(
-                      (e) => DropdownMenuItem(
-                        value: e.itemValue,
-                        child: Text(e.itemLabel),
-                      ),
-                    )
-                    .toList(),
+            items: FormExtensions.toDropdownItems(DocStatus.values),
             name: DocFields.status.name,
             decoration: const InputDecoration(labelText: "Status"),
             validator: DocSchema.validator(DocFields.status),
@@ -77,13 +68,3 @@ class DocForm extends StatelessWidget {
     );
   }
 }
-
-final formDocProvider = Provider.family<DocFormController, String?>((ref, ar) {
-  final docs = ref.watch(docsProvider.notifier);
-
-  return DocFormController(
-    onSuccess:
-        (doc) =>
-            ar != null ? docs.editDoc(ar: ar, doc: doc) : docs.addDoc(doc: doc),
-  );
-}, dependencies: docsProvider.allTransitiveDependencies);

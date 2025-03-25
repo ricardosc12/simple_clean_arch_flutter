@@ -9,11 +9,13 @@ class MainLayoutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AutoTabsRouter(
+
       routes: const [
         DashboardRoute(),
         RomaneioNavigationRoute(),
         IncidenteNavigationRoute(),
       ],
+      
       transitionBuilder:
           (context, child, animation) =>
               FadeTransition(opacity: animation, child: child),
