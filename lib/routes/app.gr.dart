@@ -162,6 +162,22 @@ class MainLayoutRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [MetahumanListScreen]
+class MetahumanListRoute extends PageRouteInfo<void> {
+  const MetahumanListRoute({List<PageRouteInfo>? children})
+    : super(MetahumanListRoute.name, initialChildren: children);
+
+  static const String name = 'MetahumanListRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return MetahumanListScreen();
+    },
+  );
+}
+
+/// generated route for
 /// [RomaneioDetailScreen]
 class RomaneioDetailRoute extends PageRouteInfo<RomaneioDetailRouteArgs> {
   RomaneioDetailRoute({Key? key, Doc? doc, List<PageRouteInfo>? children})

@@ -11,9 +11,9 @@ import 'package:flutter_application_1/feature/romaneio/presentation/screen/roman
 import 'package:flutter_application_1/shared/domain/models/doc.dart';
 import 'package:flutter_application_1/shared/presentation/layout/main_layout.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import '../feature/incidente/presentation/screen/incidente_detail_screen.dart';
 import '../feature/incidente/presentation/screen/incidente_screen.dart';
+import '../feature/listing/presentation/screen/metahuman_list_screen.dart';
 import '../shared/domain/models/incidente.dart';
 
 part 'app.gr.dart';
@@ -77,6 +77,10 @@ class AppRouter extends RootStackRouter {
               ],
             ),
           ],
+        ),
+        AutoRoute(
+          path: "metahuman",
+          page: MetahumanListRoute.page,
         ),
       ],
     ),

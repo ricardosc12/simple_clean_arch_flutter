@@ -14,8 +14,9 @@ class MainLayoutPage extends StatelessWidget {
         DashboardRoute(),
         RomaneioNavigationRoute(),
         IncidenteNavigationRoute(),
+        MetahumanListRoute(),
       ],
-      
+
       transitionBuilder:
           (context, child, animation) =>
               FadeTransition(opacity: animation, child: child),
@@ -25,6 +26,8 @@ class MainLayoutPage extends StatelessWidget {
         return Scaffold(
           body: Column(children: [Expanded(child: child)]),
           bottomNavigationBar: BottomNavigationBar(
+            selectedItemColor: Colors.blue,
+            unselectedItemColor: Colors.grey,
             currentIndex: tabsRouter.activeIndex,
             onTap: (index) {
               tabsRouter.setActiveIndex(index);
@@ -41,6 +44,10 @@ class MainLayoutPage extends StatelessWidget {
               BottomNavigationBarItem(
                 label: "Incidente",
                 icon: const Icon(Icons.chat),
+              ),
+              BottomNavigationBarItem(
+                label: "Herois",
+                icon: const Icon(Icons.bolt),
               ),
             ],
           ),
