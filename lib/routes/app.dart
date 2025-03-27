@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_application_1/feature/auth/presentation/login_screen.dart';
+import 'package:flutter_application_1/feature/auth/view/login_screen.dart';
 import 'package:flutter_application_1/feature/dashboard/presentation/dash_navigation_screen.dart';
 import 'package:flutter_application_1/feature/dashboard/presentation/dash_rom_screen.dart';
 import 'package:flutter_application_1/feature/dashboard/presentation/dashboard_screen.dart';

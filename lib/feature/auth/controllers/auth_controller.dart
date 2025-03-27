@@ -1,12 +1,12 @@
-import 'package:flutter_application_1/feature/auth/providers/auth_state.dart';
-import 'package:flutter_application_1/feature/auth/providers/json.dart';
+import 'package:flutter_application_1/feature/auth/states/auth_state.dart';
+import 'package:flutter_application_1/feature/auth/controllers/json.dart';
 import 'package:flutter_application_1/shared/data/dto/auth/login_params.dart';
 import 'package:flutter_application_1/shared/data/dto/docs/get_doc_params.dart';
 import 'package:flutter_application_1/shared/data/repository/auth_repository.dart';
 import 'package:flutter_application_1/shared/data/repository/doc_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'auth_provider.g.dart';
+part 'auth_controller.g.dart';
 
 @riverpod
 class Auth extends _$Auth {

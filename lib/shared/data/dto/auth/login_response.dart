@@ -116,7 +116,7 @@ abstract class Coordenada with _$Coordenada {
 
 @freezed
 abstract class Modulo with _$Modulo {
-  const factory Modulo({required bool ativo, required bool web}) = _Modulo;
+  const factory Modulo({required bool? ativo, required bool? web}) = _Modulo;
 
   factory Modulo.fromJson(Map<String, dynamic> json) => _$ModuloFromJson(json);
 }

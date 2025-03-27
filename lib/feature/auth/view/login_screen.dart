@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/feature/auth/presentation/widgets/user_form.dart';
-import 'package:flutter_application_1/feature/auth/providers/auth_provider.dart';
-import 'package:flutter_application_1/feature/auth/providers/auth_state.dart';
-import 'package:flutter_application_1/feature/auth/providers/form_provider.dart';
+import 'package:flutter_application_1/feature/auth/controllers/auth_controller.dart';
+import 'package:flutter_application_1/feature/auth/controllers/user_form_controller.dart';
+import 'package:flutter_application_1/feature/auth/states/auth_state.dart';
+import 'package:flutter_application_1/feature/auth/view/widgets/user_form.dart';
 import 'package:flutter_application_1/routes/app.dart';
 import 'package:flutter_application_1/shared/presentation/form_controller.dart';
 import 'package:flutter_application_1/shared/presentation/layout/notify_panel/providers.dart';

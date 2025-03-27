@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/feature/auth/providers/auth_provider.dart';
-import 'package:flutter_application_1/feature/auth/providers/auth_state.dart';
+import 'package:flutter_application_1/feature/auth/controllers/auth_controller.dart';
+import 'package:flutter_application_1/feature/auth/states/auth_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class UserHeader extends ConsumerWidget {
