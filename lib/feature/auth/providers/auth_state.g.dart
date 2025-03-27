@@ -14,24 +14,24 @@ Map<String, dynamic> _$InitToJson(Init instance) => <String, dynamic>{
 };
 
 Logged _$LoggedFromJson(Map<String, dynamic> json) => Logged(
-  user: User.fromJson(json['user'] as Map<String, dynamic>),
+  user: Usuario.fromJson(json['user'] as Map<String, dynamic>),
   $type: json['runtimeType'] as String?,
 );
 
 Map<String, dynamic> _$LoggedToJson(Logged instance) => <String, dynamic>{
-  'user': instance.user,
+  'user': instance.user.toJson(),
   'runtimeType': instance.$type,
 };
 
 Refreshed _$RefreshedFromJson(Map<String, dynamic> json) => Refreshed(
   refreshData: RefreshData.fromJson(
-    json['refreshData'] as Map<String, dynamic>,
+    json['refresh_data'] as Map<String, dynamic>,
   ),
   $type: json['runtimeType'] as String?,
 );
 
 Map<String, dynamic> _$RefreshedToJson(Refreshed instance) => <String, dynamic>{
-  'refreshData': instance.refreshData,
+  'refresh_data': instance.refreshData.toJson(),
   'runtimeType': instance.$type,
 };
 

@@ -8,7 +8,7 @@ part of 'incidente.dart';
 
 _Incidente _$IncidenteFromJson(Map<String, dynamic> json) => _Incidente(
   id: json['id'] as String,
-  nomeRelator: json['nomeRelator'] as String,
+  nomeRelator: json['nome_relator'] as String,
   email: json['email'] as String,
   telefone: json['telefone'] as String,
   situacao: $enumDecode(_$IncidenteSituacaoEnumMap, json['situacao']),
@@ -19,7 +19,7 @@ _Incidente _$IncidenteFromJson(Map<String, dynamic> json) => _Incidente(
 Map<String, dynamic> _$IncidenteToJson(_Incidente instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'nomeRelator': instance.nomeRelator,
+      'nome_relator': instance.nomeRelator,
       'email': instance.email,
       'telefone': instance.telefone,
       'situacao': _$IncidenteSituacaoEnumMap[instance.situacao]!,

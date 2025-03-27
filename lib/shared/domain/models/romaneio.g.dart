@@ -9,14 +9,14 @@ part of 'romaneio.dart';
 Romaneio _$RomaneioFromJson(Map<String, dynamic> json) => Romaneio(
   cod: json['cod'] as String,
   numero: json['numero'] as String,
-  grupoEmp: json['grupoEmp'] as String,
+  grupoEmp: json['grupo_emp'] as String,
   tipo: $enumDecode(_$RomaneioTipoEnumMap, json['tipo']),
 );
 
 Map<String, dynamic> _$RomaneioToJson(Romaneio instance) => <String, dynamic>{
   'cod': instance.cod,
   'numero': instance.numero,
-  'grupoEmp': instance.grupoEmp,
+  'grupo_emp': instance.grupoEmp,
   'tipo': _$RomaneioTipoEnumMap[instance.tipo]!,
 };
 

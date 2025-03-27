@@ -16,7 +16,7 @@ class UserHeader extends ConsumerWidget {
 
         return Row(
           children: [
-            Text(user.grupoEmp),
+            Text(user.grupoAtivo ?? "Nenhum"),
             const Icon(Icons.person, color: Color.fromARGB(255, 255, 255, 255)),
           ],
         );

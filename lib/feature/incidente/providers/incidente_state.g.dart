@@ -20,7 +20,7 @@ _IncidenteState _$IncidenteStateFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$IncidenteStateToJson(_IncidenteState instance) =>
     <String, dynamic>{
-      'incidentes': instance.incidentes.toJson((value) => value),
+      'incidentes': instance.incidentes.toJson((value) => value.toJson()),
       'status': _$IncidenteStatusEnumMap[instance.status]!,
     };
 

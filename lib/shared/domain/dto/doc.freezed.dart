@@ -79,8 +79,8 @@ as String,
 
 
 /// @nodoc
-@JsonSerializable()
 
+@JsonSerializable(fieldRename: FieldRename.snake)
 class _CreateDocDto implements CreateDocDto {
    _CreateDocDto({required this.status, required this.destinatario, required this.remetente});
   factory _CreateDocDto.fromJson(Map<String, dynamic> json) => _$CreateDocDtoFromJson(json);

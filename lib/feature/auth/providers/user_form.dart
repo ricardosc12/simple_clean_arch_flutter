@@ -1,5 +1,5 @@
+import 'package:flutter_application_1/shared/data/dto/auth/login_params.dart';
 import 'package:flutter_application_1/shared/domain/dto/form_schema.dart';
-import 'package:flutter_application_1/shared/domain/dto/login_user.dart';
 import 'package:flutter_application_1/shared/log/log_service.dart';
 import 'package:flutter_application_1/shared/presentation/form_controller.dart';
 import 'package:luthor/luthor.dart';
@@ -23,7 +23,7 @@ abstract class UserSchema {
   }
 }
 
-class UserFormController extends FormController<LoginUserDto> {
+class UserFormController extends FormController<LoginParam> {
   UserFormController({required super.onSuccess});
 
   @override
@@ -37,7 +37,7 @@ class UserFormController extends FormController<LoginUserDto> {
 
       final values = state.value;
 
-      onSuccess(LoginUserDto.fromJson(values));
+      onSuccess(LoginParam.fromJson(values));
       return FormStatus.submitted;
     } catch (e) {
       LogService.logger.error(e);

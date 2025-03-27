@@ -6,6 +6,7 @@ part 'doc.g.dart';
 
 @freezed
 abstract class CreateDocDto with _$CreateDocDto {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   factory CreateDocDto({
     required DocStatus status,
     required String destinatario,

@@ -1,7 +1,6 @@
 import 'package:faker/faker.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter_application_1/feature/incidente/providers/incidente_state.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../shared/domain/dto/incidente.dart';
 import '../../../shared/domain/models/incidente.dart';

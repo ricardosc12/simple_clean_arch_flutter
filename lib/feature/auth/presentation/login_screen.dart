@@ -84,6 +84,12 @@ class HomeScreen extends ConsumerWidget {
                 },
                 child: const Text("Rom Page"),
               ),
+              ElevatedButton(
+                onPressed: () {
+                  ref.read(authProvider.notifier).getDocs();
+                },
+                child: const Text("Get Docs"),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 spacing: 15,

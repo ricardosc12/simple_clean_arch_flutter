@@ -126,7 +126,7 @@ class Logged implements AuthState {
   const Logged({required this.user, final  String? $type}): $type = $type ?? 'logged';
   factory Logged.fromJson(Map<String, dynamic> json) => _$LoggedFromJson(json);
 
- final  User user;
+ final  Usuario user;
 
 @JsonKey(name: 'runtimeType')
 final String $type;
@@ -165,11 +165,11 @@ abstract mixin class $LoggedCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
   factory $LoggedCopyWith(Logged value, $Res Function(Logged) _then) = _$LoggedCopyWithImpl;
 @useResult
 $Res call({
- User user
+ Usuario user
 });
 
 
-$UserCopyWith<$Res> get user;
+$UsuarioCopyWith<$Res> get user;
 
 }
 /// @nodoc
@@ -185,7 +185,7 @@ class _$LoggedCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') $Res call({Object? user = null,}) {
   return _then(Logged(
 user: null == user ? _self.user : user // ignore: cast_nullable_to_non_nullable
-as User,
+as Usuario,
   ));
 }
 
@@ -193,9 +193,9 @@ as User,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$UserCopyWith<$Res> get user {
+$UsuarioCopyWith<$Res> get user {
   
-  return $UserCopyWith<$Res>(_self.user, (value) {
+  return $UsuarioCopyWith<$Res>(_self.user, (value) {
     return _then(_self.copyWith(user: value));
   });
 }

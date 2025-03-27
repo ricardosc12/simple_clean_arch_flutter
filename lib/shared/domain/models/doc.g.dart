@@ -22,7 +22,7 @@ Map<String, dynamic> _$DocToJson(_Doc instance) => <String, dynamic>{
   'chave': instance.chave,
   'numero': instance.numero,
   'status': _$DocStatusEnumMap[instance.status]!,
-  'romaneio': instance.romaneio,
+  'romaneio': instance.romaneio.toJson(),
   'destinatario': instance.destinatario,
   'remetente': instance.remetente,
   'volumes': instance.volumes,

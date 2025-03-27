@@ -1,42 +1,29 @@
-import 'package:dio/browser.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_application_1/configs/app_config.dart';
+import 'package:flutter_application_1/core/configs/app_config.dart';
+import 'package:flutter_application_1/core/configs/dio_config.dart';
 import 'package:flutter_application_1/shared/data/network_service.dart';
 import 'package:multiple_result/multiple_result.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+part 'dio_service.g.dart';
+
+@riverpod
+class DioState extends _$DioState {
+  @override
+  Dio build() {
+    return createDioConfig(baseUrl: "");
+  }
+}
+
 String TOKEN = "";
+
 class DioService extends NetworkService {
   final AppConfigState config;
   late final Dio dio;
 
   DioService({required this.config}) {
     // final cookieJar = CookieJar();
-    final options = BaseOptions(
-      baseUrl: config.baseUrl,
-
-      headers: {"Accept": "application/json"},
-    );
-    // final dio = Dio();
-
-    DioForBrowser dio = DioForBrowser(options);
-
-    var adapter = BrowserHttpClientAdapter();
-    adapter.withCredentials = true;
-    dio.httpClientAdapter = adapter;
-
-    dio.interceptors.add(
-      InterceptorsWrapper(
-        onRequest: (RequestOptions options, RequestInterceptorHandler handler) {
-          if (options.path != "/secure/auth/refresh" &&
-              options.path != "/secure/api/usuarios/entrar") {
-            options.headers["Authorization"] = "Bearer $TOKEN";
-          }
-
-          return handler.next(options);
-        },
-      ),
-    );
+    Dio dio = createDioConfig(baseUrl: baseUrl);
 
     // dio.interceptors.add(CookieManager(cookieJar));
     // dio.interceptors.add(

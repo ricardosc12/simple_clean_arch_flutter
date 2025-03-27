@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/feature/auth/providers/user_form.dart';
+import 'package:flutter_application_1/shared/data/dto/auth/login_params.dart';
 import 'package:flutter_application_1/shared/presentation/form_controller.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
@@ -12,8 +13,12 @@ class UserForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FormBuilder(
+      initialValue:
+          LoginParam(
+            usuario: "super@azapfy.com",
+            senha: "Ssa@Super266",
+          ).toJson(),
       key: userForm.formKey,
-
       child: Column(
         children: [
           FormBuilderTextField(

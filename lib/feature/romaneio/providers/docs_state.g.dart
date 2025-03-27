@@ -19,7 +19,7 @@ _DocsState _$DocsStateFromJson(Map<String, dynamic> json) => _DocsState(
 
 Map<String, dynamic> _$DocsStateToJson(_DocsState instance) =>
     <String, dynamic>{
-      'docs': instance.docs.toJson((value) => value),
+      'docs': instance.docs.toJson((value) => value.toJson()),
       'status': _$DocsStatusEnumMap[instance.status]!,
     };
 

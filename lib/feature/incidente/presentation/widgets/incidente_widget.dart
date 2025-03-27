@@ -8,7 +8,7 @@ import '../../providers/incidente_provider.dart';
 import 'package:intl/intl.dart';
 
 class IncidenteWidgetWrapper extends ConsumerWidget {
-  IncidenteWidgetWrapper({super.key});
+  const IncidenteWidgetWrapper({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

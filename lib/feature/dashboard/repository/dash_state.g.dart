@@ -14,4 +14,6 @@ _DashState _$DashStateFromJson(Map<String, dynamic> json) => _DashState(
 );
 
 Map<String, dynamic> _$DashStateToJson(_DashState instance) =>
-    <String, dynamic>{'users': instance.users.toJson((value) => value)};
+    <String, dynamic>{
+      'users': instance.users.toJson((value) => value.toJson()),
+    };

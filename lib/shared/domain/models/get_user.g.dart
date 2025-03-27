@@ -17,7 +17,7 @@ _LoginResponseDto _$LoginResponseDtoFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$LoginResponseDtoToJson(_LoginResponseDto instance) =>
     <String, dynamic>{
       'status': instance.status,
-      'dados': instance.dados,
+      'dados': instance.dados.toJson(),
       'access_token': instance.accessToken,
       'mensagem': instance.mensagem,
     };
@@ -27,7 +27,7 @@ _LoginData _$LoginDataFromJson(Map<String, dynamic> json) => _LoginData(
 );
 
 Map<String, dynamic> _$LoginDataToJson(_LoginData instance) =>
-    <String, dynamic>{'usuario': instance.usuario};
+    <String, dynamic>{'usuario': instance.usuario.toJson()};
 
 _LogiDatanUser _$LogiDatanUserFromJson(Map<String, dynamic> json) =>
     _LogiDatanUser(

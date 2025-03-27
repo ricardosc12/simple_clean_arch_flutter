@@ -8,7 +8,7 @@ part of 'toast.dart';
 
 _ToastInformation _$ToastInformationFromJson(Map<String, dynamic> json) =>
     _ToastInformation(
-      toastType: $enumDecode(_$ToastTypeEnumMap, json['toastType']),
+      toastType: $enumDecode(_$ToastTypeEnumMap, json['toast_type']),
       message: json['message'] as String,
       time:
           json['time'] == null ? null : DateTime.parse(json['time'] as String),
@@ -18,7 +18,7 @@ _ToastInformation _$ToastInformationFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$ToastInformationToJson(_ToastInformation instance) =>
     <String, dynamic>{
       'time': instance.time.toIso8601String(),
-      'toastType': _$ToastTypeEnumMap[instance.toastType]!,
+      'toast_type': _$ToastTypeEnumMap[instance.toastType]!,
       'message': instance.message,
       'id': instance.id,
     };

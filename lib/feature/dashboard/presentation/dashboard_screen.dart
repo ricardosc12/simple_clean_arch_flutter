@@ -40,7 +40,7 @@ class DashboardScreen extends ConsumerWidget {
                   },
                   child: const Text("Refresh Token"),
                 ),
-                                ElevatedButton(
+                ElevatedButton(
                   onPressed: () {
                     ref.read(authProvider.notifier).getUsers();
                   },
@@ -63,8 +63,8 @@ class DashboardScreen extends ConsumerWidget {
                               "User Logado: ",
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
-                            Text(user.user.email),
-                            Text(user.user.grupoEmp),
+                            Text(user.user.email ?? ""),
+                            Text(user.user.grupoAtivo ?? ""),
                           ],
                         );
                       } else if (user is Refreshed) {

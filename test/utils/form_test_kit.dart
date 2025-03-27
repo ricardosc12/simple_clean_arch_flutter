@@ -31,11 +31,11 @@ class FormTestKit<T extends Enum, D> {
   });
 
   void test() {
-    fields.forEach((value) {
+    for (var value in fields) {
       Map<String, dynamic> possibleValues = generatePossibleValues();
       List<String> possibilityTypes = [];
 
-      possibleValues.entries.forEach((possibility) {
+      for (var possibility in possibleValues.entries) {
         final possibilityKey = possibility.key;
         final possibilityValue = possibility.value;
 
@@ -58,10 +58,10 @@ class FormTestKit<T extends Enum, D> {
                 "Field Tested: ${value.name} - Used value: $possibilityValue",
           );
         }
-      });
+      }
       print(
         "Field: ${value.name} - Possibilities: ${possibilityTypes.join("|")}",
       );
-    });
+    }
   }
 }

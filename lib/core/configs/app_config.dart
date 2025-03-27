@@ -26,7 +26,7 @@ class AppConfig extends _$AppConfig {
     return AppConfigState(baseUrl: BaseUrl.prod.url);
   }
 
-  void setBaseUrl(String baseUrl) {
-    state = state.copyWith(baseUrl: baseUrl);
+  void setBaseUrl(BaseUrl baseUrl) {
+    state = state.copyWith(baseUrl: baseUrl.url);
   }
 }
