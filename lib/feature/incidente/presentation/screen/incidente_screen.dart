@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/shared/domain/models/incidente.dart';
-import 'package:flutter_application_1/shared/presentation/layout/app_bar.dart';
+import 'package:flutter_application_1/shared/view/layout/app_bar.dart';
 import 'package:flutter_application_1/feature/incidente/presentation/widgets/buildBlock.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../routes/app.dart';

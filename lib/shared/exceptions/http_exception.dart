@@ -10,7 +10,7 @@ abstract class AppException with _$AppException implements Exception {
   
   const factory AppException({
     required String message,
-    required int statusCode,
+    int? statusCode,
     String? id,
   }) = _AppException;
 

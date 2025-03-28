@@ -3,7 +3,7 @@ import 'package:flutter_application_1/shared/domain/dto/doc.dart';
 import 'package:flutter_application_1/shared/domain/dto/form_schema.dart';
 import 'package:flutter_application_1/shared/domain/models/doc.dart';
 import 'package:flutter_application_1/shared/log/log_service.dart';
-import 'package:flutter_application_1/shared/presentation/form_controller.dart';
+import 'package:flutter_application_1/shared/view/form_controller.dart';
 import 'package:flutter_application_1/shared/utils/validation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:luthor/luthor.dart';

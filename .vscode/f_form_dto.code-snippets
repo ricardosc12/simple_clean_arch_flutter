@@ -27,7 +27,9 @@
             "import 'package:flutter_application_1/shared/utils/enum.dart';",
             "import 'package:freezed_annotation/freezed_annotation.dart';",
             "",
-            "@JsonEnum()",
+            "part '$TM_FILENAME_BASE.g.dart';",
+            "",
+            "@JsonEnum(alwaysCreate: true)",
             "enum $1 with EnumUpperStatus {",
             "  @JsonValue(\"SUCCESS\")",
             "  success(\"Sucesso\"),",
@@ -38,6 +40,8 @@
             "",
             "  @override",
             "  final String itemLabel;",
+            "  @override",
+            "  String toJson() => _$$1EnumMap[this] ?? name.toUpperCase();",
             "}"
         ],
         "description": ""

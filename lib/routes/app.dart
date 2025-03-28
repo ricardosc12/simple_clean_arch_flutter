@@ -1,15 +1,20 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_application_1/feature/auth/view/login_screen.dart';
+import 'package:flutter_application_1/feature/auth/view/pages/login_page.dart';
 import 'package:flutter_application_1/feature/dashboard/presentation/dash_navigation_screen.dart';
 import 'package:flutter_application_1/feature/dashboard/presentation/dash_rom_screen.dart';
 import 'package:flutter_application_1/feature/dashboard/presentation/dashboard_screen.dart';
+import 'package:flutter_application_1/feature/financeiro/view/pages/fatura_detail_page.dart';
+import 'package:flutter_application_1/feature/financeiro/view/pages/fatura_list_page.dart';
+import 'package:flutter_application_1/feature/financeiro/view/pages/fatura_navigation.dart';
 import 'package:flutter_application_1/feature/incidente/presentation/screen/incidente_nav_screen.dart';
-import 'package:flutter_application_1/feature/romaneio/presentation/screen/romaneio_detail_screen.dart';
-import 'package:flutter_application_1/feature/romaneio/presentation/screen/romaneio_list_screen.dart';
-import 'package:flutter_application_1/feature/romaneio/presentation/screen/romaneio_nav_screen.dart';
+import 'package:flutter_application_1/feature/romaneio/view/screen/romaneio_detail_screen.dart';
+import 'package:flutter_application_1/feature/romaneio/view/screen/romaneio_list_screen.dart';
+import 'package:flutter_application_1/feature/romaneio/view/screen/romaneio_nav_screen.dart';
+import 'package:flutter_application_1/shared/data/dto/financeiro/financeiro_response.dart';
 import 'package:flutter_application_1/shared/domain/models/doc.dart';
-import 'package:flutter_application_1/shared/presentation/layout/main_layout.dart';
+import 'package:flutter_application_1/shared/view/guards/params_guard.dart';
+import 'package:flutter_application_1/shared/view/layout/main_layout.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../feature/incidente/presentation/screen/incidente_detail_screen.dart';
@@ -41,19 +46,12 @@ class AppRouter extends RootStackRouter {
       // guards: [AuthGuard(ref)],
       children: [
         AutoRoute(
-            path: "incidente",
-            page: IncidenteNavigationRoute.page,
-            children: [
-              AutoRoute(
-                  path: "",
-                  page: IncidenteRoute.page,
-                  initial: true,
-              ),
-              AutoRoute(
-                  path: "detail",
-                  page: IncidenteDetailRoute.page,
-              ),
-            ]
+          path: "incidente",
+          page: IncidenteNavigationRoute.page,
+          children: [
+            AutoRoute(path: "", page: IncidenteRoute.page, initial: true),
+            AutoRoute(path: "detail", page: IncidenteDetailRoute.page),
+          ],
         ),
 
         AutoRoute(
@@ -62,6 +60,20 @@ class AppRouter extends RootStackRouter {
           children: [
             AutoRoute(path: "", page: DashboardRoute.page, initial: true),
             AutoRoute(path: "rom", page: DashRomRoute.page),
+          ],
+        ),
+        AutoRoute(
+          path: "faturas",
+          page: FaturaNavigationRoute.page,
+          children: [
+            AutoRoute(path: "", page: FaturaListRoute.page, initial: true),
+            AutoRoute(
+              path: "detail",
+              page: FaturaDetailRoute.page,
+              guards: [
+                EnsureParamsGuard(fallbackRoute: const FaturaListRoute()),
+              ],
+            ),
           ],
         ),
         AutoRoute(

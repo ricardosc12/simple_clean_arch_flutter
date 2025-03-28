@@ -7,7 +7,7 @@ abstract class FormExtensions {
   ) {
     return values.map<DropdownMenuItem<String>>((status) {
       return DropdownMenuItem<String>(
-        value: status.itemValue,
+        value: status.toJson(),
         child: Text(status.itemLabel),
       );
     }).toList();

@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_application_1/core/adapters/response_api_adapter.dart';
-import 'package:flutter_application_1/core/data/endpoints.dart';
 import 'package:flutter_application_1/core/data/network_service.dart';
 import 'package:flutter_application_1/core/dtos/respose_api_dto.dart';
 import 'package:flutter_application_1/shared/data/dto/docs/get_doc_params.dart';
@@ -20,7 +19,7 @@ final docsApiProvider = Provider<DocsApi>((ref) {
 abstract class DocsApi {
   factory DocsApi(Dio dio) = _DocsApi;
 
-  @POST(Endpoints.getDocs)
+  @POST("/api/appmotorista/pesquisar")
   Future<Result<ApiSuccess<GetDocsResponse>, ApiError>> getDocs(
     @Body() GetDocsParam params,
   );

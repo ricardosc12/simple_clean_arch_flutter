@@ -12,6 +12,16 @@ class RemoteObserver extends TalkerObserver {
   }
 }
 
+abstract class LogServiceI {
+  void critical(dynamic msg, [Object? exception, StackTrace? stackTrace]);
+  void info(dynamic msg, [Object? exception, StackTrace? stackTrace]);
+  void debug(dynamic msg, [Object? exception, StackTrace? stackTrace]);
+  void error(dynamic msg, [Object? exception, StackTrace? stackTrace]);
+  void log(dynamic msg, [Object? exception, StackTrace? stackTrace]);
+  void verbose(dynamic msg, [Object? exception, StackTrace? stackTrace]);
+  void warning(dynamic msg, [Object? exception, StackTrace? stackTrace]);
+}
+
 class LogService {
   static final Talker _instance = Talker(
     observer: RemoteObserver(),

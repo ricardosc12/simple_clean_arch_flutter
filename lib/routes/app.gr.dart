@@ -59,6 +59,75 @@ class DashboardRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [FaturaDetailPage]
+class FaturaDetailRoute extends PageRouteInfo<FaturaDetailRouteArgs> {
+  FaturaDetailRoute({
+    Key? key,
+    required Fatura fatura,
+    List<PageRouteInfo>? children,
+  }) : super(
+         FaturaDetailRoute.name,
+         args: FaturaDetailRouteArgs(key: key, fatura: fatura),
+         initialChildren: children,
+       );
+
+  static const String name = 'FaturaDetailRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<FaturaDetailRouteArgs>();
+      return FaturaDetailPage(key: args.key, fatura: args.fatura);
+    },
+  );
+}
+
+class FaturaDetailRouteArgs {
+  const FaturaDetailRouteArgs({this.key, required this.fatura});
+
+  final Key? key;
+
+  final Fatura fatura;
+
+  @override
+  String toString() {
+    return 'FaturaDetailRouteArgs{key: $key, fatura: $fatura}';
+  }
+}
+
+/// generated route for
+/// [FaturaListPage]
+class FaturaListRoute extends PageRouteInfo<void> {
+  const FaturaListRoute({List<PageRouteInfo>? children})
+    : super(FaturaListRoute.name, initialChildren: children);
+
+  static const String name = 'FaturaListRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const FaturaListPage();
+    },
+  );
+}
+
+/// generated route for
+/// [FaturaNavigationPage]
+class FaturaNavigationRoute extends PageRouteInfo<void> {
+  const FaturaNavigationRoute({List<PageRouteInfo>? children})
+    : super(FaturaNavigationRoute.name, initialChildren: children);
+
+  static const String name = 'FaturaNavigationRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const FaturaNavigationPage();
+    },
+  );
+}
+
+/// generated route for
 /// [HomeScreen]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})

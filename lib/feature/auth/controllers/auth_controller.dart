@@ -1,9 +1,8 @@
+import 'package:flutter_application_1/core/configs/dio_config.dart';
 import 'package:flutter_application_1/feature/auth/states/auth_state.dart';
-import 'package:flutter_application_1/feature/auth/controllers/json.dart';
 import 'package:flutter_application_1/shared/data/dto/auth/login_params.dart';
-import 'package:flutter_application_1/shared/data/dto/docs/get_doc_params.dart';
 import 'package:flutter_application_1/shared/data/repository/auth_repository.dart';
-import 'package:flutter_application_1/shared/data/repository/doc_repository.dart';
+import 'package:flutter_application_1/shared/domain/models/get_user.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'auth_controller.g.dart';
@@ -31,35 +30,21 @@ class Auth extends _$Auth {
     );
   }
 
-  void getUsers() async {
-    // final res = await _authRepository.getUsers();
-
-    // res.whenSuccess((data) {
-    //   ref.read(dashProvider.notifier).setUsers(data);
-    // });
-  }
-
   void refresh() async {
-    // _authRepository.refresh().then((data) {
-    //   data.when(
-    //     (data) {
-    //       state = AuthState.refreshed(refreshData: data);
-    //       TOKEN = data.accessToken;
-    //     },
-    //     (e) {
-    //       state = AuthState.error();
-    //     },
-    //   );
-    // });
-  }
+    state = const AuthState.loading();
+    
+    final res = await ref.read(authRepositoryProvider).refresh();
 
-  void getDocs() async {
-    final params = GetDocsParam.fromJson(DOC_PARAM);
-
-    final res = await ref.read(docsRepositoryProvider).getDocs(params);
-
-    res.whenSuccess((docs) {
-      print(docs);
-    });
+    res.when(
+      (data) {
+        TOKEN = data.accessToken;
+        state = AuthState.refreshed(
+          refreshData: RefreshData(accessToken: data.accessToken),
+        );
+      },
+      (e) {
+        state = AuthState.error();
+      },
+    );
   }
 }

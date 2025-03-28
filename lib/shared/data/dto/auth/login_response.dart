@@ -5,7 +5,7 @@ import 'package:flutter_application_1/shared/utils/enum.dart';
 part 'login_response.freezed.dart';
 part 'login_response.g.dart';
 
-@JsonEnum()
+@JsonEnum(alwaysCreate: true)
 enum TipoEmp with EnumUpperStatus {
   @JsonValue("DISTRIBUIDORA")
   distribuidora("Distribuidora"),
@@ -17,6 +17,8 @@ enum TipoEmp with EnumUpperStatus {
 
   @override
   final String itemLabel;
+  @override
+  String toJson() => _$TipoEmpEnumMap[this] ?? name.toUpperCase();
 }
 
 @freezed

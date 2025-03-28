@@ -3,7 +3,7 @@ import 'package:flutter_application_1/shared/domain/dto/incidente.dart';
 import 'package:flutter_application_1/shared/domain/models/incidente.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import '../../../shared/presentation/form_controller.dart';
+import '../../../shared/view/form_controller.dart';
 
 enum IncidenteFields { situacao, nomeRelator, email, telefone, resumo, data }
 

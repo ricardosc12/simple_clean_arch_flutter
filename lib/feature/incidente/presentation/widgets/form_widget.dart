@@ -5,9 +5,9 @@ import 'package:flutter_application_1/shared/domain/models/incidente.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../shared/domain/dto/incidente.dart';
-import '../../../../shared/presentation/form_controller.dart';
-import '../../../../shared/presentation/layout/mask_text_input.dart';
-import '../../../../shared/presentation/layout/toast.dart';
+import '../../../../shared/view/form_controller.dart';
+import '../../../../shared/view/layout/mask_text_input.dart';
+import '../../../../shared/view/layout/toast.dart';
 import '../../providers/form_controller.dart';
 import 'package:intl/intl.dart';
 

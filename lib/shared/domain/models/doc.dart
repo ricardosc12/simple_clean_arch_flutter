@@ -5,7 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'doc.freezed.dart';
 part 'doc.g.dart';
 
-@JsonEnum()
+@JsonEnum(alwaysCreate: true)
 enum DocStatus with EnumUpperStatus {
   @JsonValue("APP")
   app("App"),
@@ -24,6 +24,9 @@ enum DocStatus with EnumUpperStatus {
 
   @override
   final String itemLabel;
+
+  @override
+  String toJson() => _$DocStatusEnumMap[this] ?? name.toUpperCase();
 }
 
 @freezed

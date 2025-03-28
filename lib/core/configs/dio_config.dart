@@ -1,7 +1,8 @@
 import 'package:dio/browser.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_application_1/shared/data/dio_service.dart';
 import 'package:flutter_application_1/shared/log/log_service.dart';
+
+String TOKEN = "";
 
 Dio createDioConfig({required String baseUrl}) {
   final options = BaseOptions(
@@ -25,8 +26,23 @@ Dio createDioConfig({required String baseUrl}) {
 
         return handler.next(options);
       },
+      onResponse: (
+        Response<dynamic> response,
+        ResponseInterceptorHandler handler,
+      ) {
+        final path = response.realUri.path;
+        final data = response.data;
+        if (path == "/secure/api/usuarios/entrar" &&
+            data["access_token"] is String) {
+          TOKEN = data["access_token"];
+        }
+
+        return handler.next(response);
+      },
       onError: (DioException error, ErrorInterceptorHandler handler) {
         LogService.logger.error(error);
+
+        return handler.next(error);
       },
     ),
   );
