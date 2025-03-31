@@ -231,6 +231,22 @@ class MainLayoutRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [ProfilePage]
+class ProfileRoute extends PageRouteInfo<void> {
+  const ProfileRoute({List<PageRouteInfo>? children})
+    : super(ProfileRoute.name, initialChildren: children);
+
+  static const String name = 'ProfileRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const ProfilePage();
+    },
+  );
+}
+
+/// generated route for
 /// [RomaneioDetailScreen]
 class RomaneioDetailRoute extends PageRouteInfo<RomaneioDetailRouteArgs> {
   RomaneioDetailRoute({Key? key, Doc? doc, List<PageRouteInfo>? children})

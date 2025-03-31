@@ -8,6 +8,7 @@ import 'package:flutter_application_1/feature/financeiro/view/pages/fatura_detai
 import 'package:flutter_application_1/feature/financeiro/view/pages/fatura_list_page.dart';
 import 'package:flutter_application_1/feature/financeiro/view/pages/fatura_navigation.dart';
 import 'package:flutter_application_1/feature/incidente/presentation/screen/incidente_nav_screen.dart';
+import 'package:flutter_application_1/feature/profile/view/pages/profile_page.dart';
 import 'package:flutter_application_1/feature/romaneio/view/screen/romaneio_detail_screen.dart';
 import 'package:flutter_application_1/feature/romaneio/view/screen/romaneio_list_screen.dart';
 import 'package:flutter_application_1/feature/romaneio/view/screen/romaneio_nav_screen.dart';
@@ -53,7 +54,7 @@ class AppRouter extends RootStackRouter {
             AutoRoute(path: "detail", page: IncidenteDetailRoute.page),
           ],
         ),
-
+        AutoRoute(path: "profile", page: ProfileRoute.page),
         AutoRoute(
           path: "dashboard",
           page: DashNavigationRoute.page,

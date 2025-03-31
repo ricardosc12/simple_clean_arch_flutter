@@ -14,6 +14,7 @@ class MainLayoutPage extends StatelessWidget {
         RomaneioNavigationRoute(),
         IncidenteNavigationRoute(),
         FaturaNavigationRoute(),
+        ProfileRoute()
       ],
 
       transitionBuilder:
@@ -50,6 +51,10 @@ class MainLayoutPage extends StatelessWidget {
               BottomNavigationBarItem(
                 label: "Faturas",
                 icon: const Icon(Icons.money),
+              ),
+              BottomNavigationBarItem(
+                label: "Profile",
+                icon: const Icon(Icons.person),
               ),
             ],
           ),
