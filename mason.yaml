@@ -1,3 +1,5 @@
 bricks:
   api:
     path: "templates\\api"
+  feature:
+    path: "templates\\feature"
