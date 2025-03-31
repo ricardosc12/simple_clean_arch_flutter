@@ -9,6 +9,6 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: DefaultAppBar(), body: ProfileCard());
+    return Scaffold(appBar: DefaultAppBar(), body: const ProfileCard());
   }
 }
