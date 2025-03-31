@@ -1,5 +1,6 @@
 import "package:collection/collection.dart";
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
+import 'package:flutter_application_1/core/extensions/riverpod_cache_extension.dart';
 import 'package:flutter_application_1/shared/data/dto/financeiro/financeiro_param.dart';
 import 'package:flutter_application_1/shared/data/dto/financeiro/financeiro_response.dart';
 import 'package:flutter_application_1/shared/data/repository/financeiro_repository.dart';
@@ -66,9 +67,10 @@ Future<Map<FaturaStatus?, IList<Fatura>>> groupFaturasByStatus(Ref ref) async {
   ).map((k, v) => MapEntry(k, v.lock));
 }
 
-@Riverpod(keepAlive: true)
+@Riverpod(keepAlive: false)
 Future<IList<Fatura>> getFaturasByStatus(Ref ref, FaturaStatus status) async {
   print("GETTING FATURAS FROM MAP");
+  ref.cacheFor(Duration(milliseconds: 3000));
   final filtedFaturas = await ref.watch(groupFaturasByStatusProvider.future);
   return filtedFaturas[status] ?? IList();
 }

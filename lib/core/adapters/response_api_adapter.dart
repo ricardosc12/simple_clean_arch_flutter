@@ -10,7 +10,12 @@ class ResponseAdapter<T>
     try {
       final response = await call();
       if (response is ApiSuccess && response.status == false) {
-        return Error(ApiError(message: response.mensagem, status: "500"));
+        return Error(
+          ApiError(
+            message: response.mensagem ?? "Não foi possível realizar a ação!",
+            status: "500",
+          ),
+        );
       }
       return Success(response);
     } on TypeError catch (e) {

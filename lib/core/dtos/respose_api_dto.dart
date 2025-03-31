@@ -15,7 +15,7 @@ abstract class ApiError with _$ApiError {
 @Freezed(genericArgumentFactories: true)
 abstract class ApiSuccess<T> with _$ApiSuccess<T> {
   factory ApiSuccess({
-    required String mensagem,
+    required String? mensagem,
     required String? erro,
     required bool status,
     required T dados,

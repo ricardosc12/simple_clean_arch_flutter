@@ -12,8 +12,8 @@ part 'financeiro_repository.g.dart';
 
 @riverpod
 FinanceiroRepository financeiroRepository(Ref ref) {
-  // final api = ref.watch(financeiroApiProvider);
-  return FinanceiroRepositoryLocalImpl();
+  final api = ref.watch(financeiroApiProvider);
+  return FinanceiroRepositoryImpl(api);
 }
 
 abstract class FinanceiroRepository {
