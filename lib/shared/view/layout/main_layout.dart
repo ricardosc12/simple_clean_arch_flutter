@@ -14,7 +14,7 @@ class MainLayoutPage extends StatelessWidget {
         RomaneioNavigationRoute(),
         IncidenteNavigationRoute(),
         FaturaNavigationRoute(),
-        ProfileRoute()
+        ProfileRoute(),
       ],
 
       transitionBuilder:
@@ -36,6 +36,7 @@ class MainLayoutPage extends StatelessWidget {
               tabsRouter.setActiveIndex(index);
             },
             items: [
+              // BOTTOMNAV INIT - DONT REMOVE COMMENT
               BottomNavigationBarItem(
                 label: "Dashboard",
                 icon: const Icon(Icons.auto_graph_sharp),

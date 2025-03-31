@@ -77,28 +77,22 @@ void insertAutoTabsRouter(List<String> lines, String className) {
       lines.indexWhere((line) => line.contains('routes: const ['));
   if (routesIndex == -1) return;
 
-  final lastRouteIndex = lines.lastIndexWhere(
-      (line) => line.trim().endsWith('Route(),'), routesIndex);
-  if (lastRouteIndex == -1) return;
-
-  lines.insert(lastRouteIndex + 1, "        ${className}Route(),");
+  lines.insert(routesIndex + 1, "        ${className}Route(),");
 }
 
 /// Insere corretamente o item no `BottomNavigationBarItem`
 void insertBottomNavigation(List<String> lines, String className) {
-  final itemsIndex = lines.indexWhere((line) => line.contains('items: ['));
-  if (itemsIndex == -1) return;
+  final itemsIndex = lines.indexWhere((line) {
+    return line.contains('BOTTOMNAV INIT');
+  });
 
-  final lastItemIndex = lines.lastIndexWhere(
-      (line) => line.contains('BottomNavigationBarItem('), itemsIndex);
-  if (lastItemIndex == -1) return;
+  if (itemsIndex == -1) return;
 
   final newItem = """
               BottomNavigationBarItem(
                 label: "$className",
-                icon: const Icon(Icons.circle), // Ajuste o ícone conforme necessário
-              ),
-  """;
+                icon: const Icon(Icons.circle),
+              ),""";
 
-  lines.insert(lastItemIndex + 2, newItem);
+  lines.insert(itemsIndex + 1, newItem);
 }
