@@ -30,3 +30,8 @@ vars:
     type: string
     description: Nome da Feature
     prompt: Nome da Feature?
+  includeInBottomNav:
+    type: boolean
+    default: false
+    description: Incluir ou não no Bottom Navitagation
+    prompt: Incluir no Bottom Navigation?

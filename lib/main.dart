@@ -6,7 +6,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:oktoast/oktoast.dart';
 
-
 void main() async {
   // debugRepaintTextRainbowEnabled = true;
   runApp(ProviderScope(child: OKToast(child: MyApp())));
