@@ -1,4 +1,6 @@
+import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/feature/auth/controllers/auth_controller.dart';
 import 'package:flutter_application_1/feature/profile/controllers/profile_controller.dart';
 import 'package:flutter_application_1/feature/profile/states/profile_state.dart';
 import 'package:flutter_application_1/shared/view/layout/paper.dart';
@@ -26,6 +28,23 @@ class ProfileCard extends ConsumerWidget {
                       style: TextStyle(fontSize: 12),
                     ),
                     Text("Profile State: ${state.data}"),
+                  ],
+                ),
+              );
+            },
+          ),
+          Consumer(
+            builder: (_, ref, _) {
+              final IList<String> state = ref.watch(userGruposProvider);
+              return Paper(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      DateTime.now().toIso8601String(),
+                      style: TextStyle(fontSize: 12),
+                    ),
+                    Text("User Groups: ${state.splitAt(3)}"),
                   ],
                 ),
               );

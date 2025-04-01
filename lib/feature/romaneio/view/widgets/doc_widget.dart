@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/feature/romaneio/providers/docs_provider.dart';
 import 'package:flutter_application_1/routes/app.dart';
-import 'package:flutter_application_1/shared/domain/models/doc.dart';
+import 'package:flutter_application_1/shared/domain/models/doc_model.dart';
 import 'package:flutter_application_1/shared/view/layout/paper.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

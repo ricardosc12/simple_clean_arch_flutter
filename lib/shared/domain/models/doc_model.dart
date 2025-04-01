@@ -1,9 +1,9 @@
-import 'package:flutter_application_1/shared/domain/models/romaneio.dart';
+import 'package:flutter_application_1/shared/domain/models/romaneio_model.dart';
 import 'package:flutter_application_1/shared/utils/enum.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'doc.freezed.dart';
-part 'doc.g.dart';
+part 'doc_model.freezed.dart';
+part 'doc_model.g.dart';
 
 @JsonEnum(alwaysCreate: true)
 enum DocStatus with EnumUpperStatus {

@@ -3,8 +3,8 @@ import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter_application_1/feature/romaneio/providers/docs_state.dart';
 import 'package:flutter_application_1/feature/romaneio/repository/doc_repository.dart';
 import 'package:flutter_application_1/shared/domain/dto/doc.dart';
-import 'package:flutter_application_1/shared/domain/models/doc.dart';
-import 'package:flutter_application_1/shared/domain/models/romaneio.dart';
+import 'package:flutter_application_1/shared/domain/models/doc_model.dart';
+import 'package:flutter_application_1/shared/domain/models/romaneio_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'docs_provider.g.dart';

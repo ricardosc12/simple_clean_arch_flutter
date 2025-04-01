@@ -57,7 +57,7 @@ class DashboardScreen extends ConsumerWidget {
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                           Text(user.user.email ?? ""),
-                          Text(user.user.grupoAtivo ?? ""),
+                          Text(user.user.grupoEmp),
                         ],
                       );
                     } else if (user is Refreshed) {

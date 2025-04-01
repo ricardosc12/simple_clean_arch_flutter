@@ -1,5 +1,5 @@
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
-import 'package:flutter_application_1/shared/domain/models/doc.dart';
+import 'package:flutter_application_1/shared/domain/models/doc_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'docs_state.freezed.dart';

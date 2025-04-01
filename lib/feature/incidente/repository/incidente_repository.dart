@@ -1,6 +1,6 @@
 import 'package:faker/faker.dart';
 import 'package:multiple_result/multiple_result.dart';
-import '../../../shared/domain/models/incidente.dart';
+import '../../../shared/domain/models/incidente_model.dart';
 
 abstract class IncidenteRepository {
   Future<Result<List<Incidente>, Exception>> getIncidentes();

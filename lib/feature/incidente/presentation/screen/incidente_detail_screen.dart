@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../routes/app.dart';
 import '../../../../shared/domain/dto/incidente.dart';
-import '../../../../shared/domain/models/incidente.dart';
+import '../../../../shared/domain/models/incidente_model.dart';
 import '../../../../shared/view/layout/app_bar.dart';
 import '../../../../shared/view/layout/paper.dart';
 import '../widgets/form_widget.dart';

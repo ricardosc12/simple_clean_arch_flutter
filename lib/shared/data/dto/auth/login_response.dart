@@ -24,7 +24,7 @@ enum TipoEmp with EnumUpperStatus {
 @freezed
 abstract class LoginResponse with _$LoginResponse {
   const factory LoginResponse({
-    required Usuario usuario,
+    required UsuarioResp usuario,
     @GrupoConverter() required Map<String, Grupo> grupos,
   }) = _LoginResponse;
 
@@ -57,8 +57,8 @@ class GrupoConverter
 
 @freezed
 abstract class Grupo with _$Grupo {
-  const factory Grupo.ativo(GrupoAtivo grupo) = _GrupoOrAtivo;
-  const factory Grupo.inativo(bool ativo) = _GrupoOrInativo;
+  const factory Grupo.ativo(GrupoAtivo grupo) = GrupoOrAtivo;
+  const factory Grupo.inativo(bool ativo) = GrupoOrInativo;
 
   factory Grupo.fromJson(Map<String, dynamic> json) => _$GrupoFromJson(json);
 }
@@ -66,9 +66,9 @@ abstract class Grupo with _$Grupo {
 @freezed
 abstract class GrupoAtivo with _$GrupoAtivo {
   const factory GrupoAtivo({
-    required User user,
+    required UserResp user,
     required Emp emp,
-    required Map<String, Base> bases,
+    required Map<String, Base>? bases,
   }) = _GrupoAtivo;
 
   factory GrupoAtivo.fromJson(Map<String, dynamic> json) =>
@@ -137,29 +137,29 @@ abstract class Emp with _$Emp {
 }
 
 @freezed
-abstract class User with _$User {
-  const factory User({
+abstract class UserResp with _$UserResp {
+  const factory UserResp({
     required String? nome,
     required String? email,
     required String? grupo,
     required String? area,
-  }) = _User;
+  }) = _UserResp;
 
-  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+  factory UserResp.fromJson(Map<String, dynamic> json) => _$UserRespFromJson(json);
 }
 
 @freezed
-abstract class Usuario with _$Usuario {
-  const factory Usuario({
+abstract class UsuarioResp with _$UsuarioResp {
+  const factory UsuarioResp({
     required String? nome,
     required String? login,
     required String? email,
     required String? grupoAtivo,
-    required bool? novoUser,
+    required bool? novoUserResp,
     required String? cpf,
     required String? imgPerfil,
-  }) = _Usuario;
+  }) = _UsuarioResp;
 
-  factory Usuario.fromJson(Map<String, dynamic> json) =>
-      _$UsuarioFromJson(json);
+  factory UsuarioResp.fromJson(Map<String, dynamic> json) =>
+      _$UsuarioRespFromJson(json);
 }

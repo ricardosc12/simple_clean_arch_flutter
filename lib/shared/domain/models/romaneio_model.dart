@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'romaneio.g.dart';
+part 'romaneio_model.g.dart';
 
 enum RomaneioTipo {
   app,

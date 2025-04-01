@@ -1,6 +1,6 @@
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../shared/domain/models/incidente.dart';
+import '../../../shared/domain/models/incidente_model.dart';
 part 'incidente_state.freezed.dart';
 part 'incidente_state.g.dart';
 

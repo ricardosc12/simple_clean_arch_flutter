@@ -1,4 +1,4 @@
-import 'package:flutter_application_1/shared/domain/models/incidente.dart';
+import 'package:flutter_application_1/shared/domain/models/incidente_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'incidente.freezed.dart';

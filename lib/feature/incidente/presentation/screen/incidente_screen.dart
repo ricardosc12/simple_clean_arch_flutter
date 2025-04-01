@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/shared/domain/models/incidente.dart';
+import 'package:flutter_application_1/shared/domain/models/incidente_model.dart';
 import 'package:flutter_application_1/shared/view/layout/app_bar.dart';
 import 'package:flutter_application_1/feature/incidente/presentation/widgets/buildBlock.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,18 +17,22 @@ class IncidenteScreen extends ConsumerWidget {
     final incidenteState = ref.watch(incidentesProvider);
     final incidentes = incidenteState.incidentes;
 
-    final andamentoCount = incidentes
-        .where((e) => e.situacao == IncidenteSituacao.andamento)
-        .length;
-    final finalizadoCount = incidentes
-        .where((e) => e.situacao == IncidenteSituacao.finalizado)
-        .length;
-    final impedidoCount = incidentes
-        .where((e) => e.situacao == IncidenteSituacao.impedido)
-        .length;
-    final pendenteCount = incidentes
-        .where((e) => e.situacao == IncidenteSituacao.pendente)
-        .length;
+    final andamentoCount =
+        incidentes
+            .where((e) => e.situacao == IncidenteSituacao.andamento)
+            .length;
+    final finalizadoCount =
+        incidentes
+            .where((e) => e.situacao == IncidenteSituacao.finalizado)
+            .length;
+    final impedidoCount =
+        incidentes
+            .where((e) => e.situacao == IncidenteSituacao.impedido)
+            .length;
+    final pendenteCount =
+        incidentes
+            .where((e) => e.situacao == IncidenteSituacao.pendente)
+            .length;
 
     return Scaffold(
       appBar: DefaultAppBar(),
@@ -89,10 +93,11 @@ class IncidenteScreen extends ConsumerWidget {
                 itemCount: ref.watch(
                   incidentesProvider.select((e) => e.incidentes.length),
                 ),
-                itemBuilder: (_, index) => ProviderScope(
-                  overrides: [indexProvider.overrideWith((_) => index)],
-                  child: IncidenteWidgetWrapper(),
-                ),
+                itemBuilder:
+                    (_, index) => ProviderScope(
+                      overrides: [indexProvider.overrideWith((_) => index)],
+                      child: IncidenteWidgetWrapper(),
+                    ),
               ),
             ),
           ],

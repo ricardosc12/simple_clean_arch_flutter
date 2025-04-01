@@ -1,17 +1,16 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'user.g.dart';
-part 'user.freezed.dart';
+part 'user_model.g.dart';
+part 'user_model.freezed.dart';
 
 @freezed
 abstract class User with _$User {
-  @JsonSerializable(fieldRename: FieldRename.snake)
   const factory User({
     String? name,
-    required String email,
+    String? email,
     required String grupoEmp,
-    required String accessToken,
-    List<String>? bases,
+    required List<String> bases,
+    required List<String> grupos,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

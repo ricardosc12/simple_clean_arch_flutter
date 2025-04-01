@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/feature/romaneio/providers/form_controller.dart';
 import 'package:flutter_application_1/shared/domain/dto/doc.dart';
-import 'package:flutter_application_1/shared/domain/models/doc.dart';
+import 'package:flutter_application_1/shared/domain/models/doc_model.dart';
 import 'package:flutter_application_1/shared/view/form_controller.dart';
 import 'package:flutter_application_1/shared/utils/form.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';

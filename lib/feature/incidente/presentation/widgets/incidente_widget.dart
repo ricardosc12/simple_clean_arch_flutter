@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../routes/app.dart';
-import '../../../../shared/domain/models/incidente.dart';
+import '../../../../shared/domain/models/incidente_model.dart';
 import '../../../../shared/view/layout/paper.dart';
 import '../../../../shared/view/layout/toast.dart';
 import '../../providers/incidente_provider.dart';

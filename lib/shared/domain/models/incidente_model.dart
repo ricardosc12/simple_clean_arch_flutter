@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'incidente.freezed.dart';
-part 'incidente.g.dart';
+part 'incidente_model.freezed.dart';
+part 'incidente_model.g.dart';
 
 @JsonEnum()
 enum IncidenteSituacao {
