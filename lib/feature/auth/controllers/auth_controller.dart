@@ -2,8 +2,8 @@ import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter_application_1/core/configs/dio_config.dart';
 import 'package:flutter_application_1/feature/auth/states/auth_state.dart';
 import 'package:flutter_application_1/shared/data/dto/auth/login_params.dart';
+import 'package:flutter_application_1/shared/data/dto/auth/refresh_response.dart';
 import 'package:flutter_application_1/shared/data/repository/auth_repository.dart';
-import 'package:flutter_application_1/shared/domain/models/get_user.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -41,7 +41,7 @@ class Auth extends _$Auth {
       (data) {
         TOKEN = data.accessToken;
         state = AuthState.refreshed(
-          refreshData: RefreshData(accessToken: data.accessToken),
+          refreshData: RefreshTokenResponse(accessToken: data.accessToken),
         );
       },
       (e) {

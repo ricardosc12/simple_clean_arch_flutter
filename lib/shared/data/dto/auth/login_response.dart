@@ -145,7 +145,8 @@ abstract class UserResp with _$UserResp {
     required String? area,
   }) = _UserResp;
 
-  factory UserResp.fromJson(Map<String, dynamic> json) => _$UserRespFromJson(json);
+  factory UserResp.fromJson(Map<String, dynamic> json) =>
+      _$UserRespFromJson(json);
 }
 
 @freezed

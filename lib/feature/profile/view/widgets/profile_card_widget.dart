@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/feature/auth/controllers/auth_controller.dart';
 import 'package:flutter_application_1/feature/profile/controllers/profile_controller.dart';
 import 'package:flutter_application_1/feature/profile/states/profile_state.dart';
+import 'package:flutter_application_1/feature/profile/view/widgets/teste.dart';
 import 'package:flutter_application_1/shared/view/layout/paper.dart';
 import 'package:flutter_application_1/shared/view/layout/toast.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,6 +17,7 @@ class ProfileCard extends ConsumerWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          ProfileTeste(),
           Consumer(
             builder: (_, ref, _) {
               final ProfileState state = ref.watch(profileProvider);
