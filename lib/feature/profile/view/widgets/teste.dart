@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/shared/view/layout/paper.dart';
 
-// Exemplo a ser evitado
+// Exemplo a ser evitado - https://docs.flutter.dev/perf/best-practices
 
 class ProfileTeste extends StatefulWidget {
   const ProfileTeste({super.key});
@@ -12,7 +12,8 @@ class ProfileTeste extends StatefulWidget {
 
 class _ProfileTesteState extends State<ProfileTeste> {
   bool status = false;
-
+  // Exemplo a ser evitado - https://docs.flutter.dev/perf/best-practices
+  
   changeStatus() {
     setState(() {
       status = !status;
@@ -21,6 +22,7 @@ class _ProfileTesteState extends State<ProfileTeste> {
 
   @override
   Widget build(BuildContext context) {
+    // Exemplo a ser evitado - https://docs.flutter.dev/perf/best-practices
     print("RE BUILDING");
     return Center(
       child: Paper(
