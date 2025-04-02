@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/shared/view/guards/user_header.dart';
 
@@ -12,15 +13,16 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool canPop = Navigator.of(context).canPop();
+    final bool canPop = context.topRoute.path.isNotEmpty;
 
     return AppBar(
       backgroundColor: const Color(0xFFFF7418),
+      automaticallyImplyLeading: false,
       leading:
           canPop
               ? IconButton(
                 icon: const Icon(Icons.arrow_back, color: Colors.white),
-                onPressed: () => Navigator.of(context).pop(),
+                onPressed: () => context.router.back(),
               )
               : null,
       title: Image.asset("logo.png", width: 130, height: 50),

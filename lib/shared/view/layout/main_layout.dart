@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/routes/app.dart';
+import 'package:flutter_application_1/shared/view/layout/app_bar.dart';
 
 @RoutePage()
 class MainLayoutPage extends StatelessWidget {
@@ -24,6 +25,7 @@ class MainLayoutPage extends StatelessWidget {
         final tabsRouter = AutoTabsRouter.of(context);
 
         return Scaffold(
+          appBar: DefaultAppBar(),
           body: Column(children: [Expanded(child: child)]),
           bottomNavigationBar: BottomNavigationBar(
             type:

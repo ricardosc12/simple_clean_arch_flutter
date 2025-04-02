@@ -15,65 +15,60 @@ class RomaneioListScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
-      appBar: DefaultAppBar(),
-      body: RefreshIndicator(
-        onRefresh: ref.read(docsProvider.notifier).syncDocs,
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.all(10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    spacing: 10,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          ref.read(docsProvider.notifier).pushDoc();
-                        },
-                        child: const Text("Render Test"),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          ref
-                              .read(routeProvider)
-                              .navigate(RomaneioDetailRoute());
-                        },
-                        child: const Text("Adicionar Doc"),
-                      ),
-                    ],
-                  ),
-                  Consumer(
-                    builder: (_, ref, _) {
-                      final docsLength = ref.watch(
-                        docsProvider.select((e) => e.docs.length),
-                      );
-                      return Text("Documentos totais: $docsLength");
-                    },
-                  ),
-                ],
-              ),
-            ),
-
-            if (ref.watch(docsProvider.select((e) => e.status)) ==
-                DocsStatus.initalLoading)
-              const Expanded(child: Center(child: LoadingProgress(size: 70))),
-
-            Expanded(
-              child: ListView.builder(
-                itemCount: ref.watch(docsProvider.select((e) => e.docs.length)),
-                itemBuilder:
-                    (_, index) => ProviderScope(
-                      overrides: [indexProvider.overrideWith((_) => index)],
-                      child: DocWidgetWrapper(),
+    return RefreshIndicator(
+      onRefresh: ref.read(docsProvider.notifier).syncDocs,
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  spacing: 10,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        ref.read(docsProvider.notifier).pushDoc();
+                      },
+                      child: const Text("Render Test"),
                     ),
-              ),
+                    ElevatedButton(
+                      onPressed: () {
+                        ref.read(routeProvider).navigate(RomaneioDetailRoute());
+                      },
+                      child: const Text("Adicionar Doc"),
+                    ),
+                  ],
+                ),
+                Consumer(
+                  builder: (_, ref, _) {
+                    final docsLength = ref.watch(
+                      docsProvider.select((e) => e.docs.length),
+                    );
+                    return Text("Documentos totais: $docsLength");
+                  },
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+
+          if (ref.watch(docsProvider.select((e) => e.status)) ==
+              DocsStatus.initalLoading)
+            const Expanded(child: Center(child: LoadingProgress(size: 70))),
+
+          Expanded(
+            child: ListView.builder(
+              itemCount: ref.watch(docsProvider.select((e) => e.docs.length)),
+              itemBuilder:
+                  (_, index) => ProviderScope(
+                    overrides: [indexProvider.overrideWith((_) => index)],
+                    child: DocWidgetWrapper(),
+                  ),
+            ),
+          ),
+        ],
       ),
     );
   }

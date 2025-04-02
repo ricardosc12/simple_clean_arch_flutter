@@ -23,6 +23,7 @@ class _ProfileTesteState extends State<ProfileTeste> {
   @override
   Widget build(BuildContext context) {
     // Exemplo a ser evitado - https://docs.flutter.dev/perf/best-practices
+
     print("RE BUILDING");
     return Center(
       child: Paper(

@@ -19,25 +19,22 @@ class RomaneioDetailScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final doc = this.doc;
-    return Scaffold(
-      appBar: DefaultAppBar(),
-      body: Paper(
-        child: DocForm(
-          form: ref.watch(formDocProvider(doc?.ar)),
-          onFinalize: (status) {
-            if (status == FormStatus.submitted) {
-              ref.read(routeProvider).navigate(const RomaneioListRoute());
-            }
-          },
-          initialState:
-              doc != null
-                  ? CreateDocDto(
-                    status: doc.status,
-                    destinatario: doc.destinatario,
-                    remetente: doc.remetente,
-                  )
-                  : null,
-        ),
+    return Paper(
+      child: DocForm(
+        form: ref.watch(formDocProvider(doc?.ar)),
+        onFinalize: (status) {
+          if (status == FormStatus.submitted) {
+            ref.read(routeProvider).navigate(const RomaneioListRoute());
+          }
+        },
+        initialState:
+            doc != null
+                ? CreateDocDto(
+                  status: doc.status,
+                  destinatario: doc.destinatario,
+                  remetente: doc.remetente,
+                )
+                : null,
       ),
     );
   }

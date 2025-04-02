@@ -1,11 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_application_1/feature/incidente/presentation/screen/incidente_screen.dart';
-import 'package:flutter_application_1/shared/domain/models/doc_model.dart';
-import 'package:flutter_application_1/shared/domain/models/incidente_model.dart';
-import 'package:flutter_application_1/shared/view/guards/params_guard.dart';
-import 'package:flutter_application_1/shared/view/layout/main_layout.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_application_1/feature/auth/view/pages/login_page.dart';
 import 'package:flutter_application_1/feature/dashboard/presentation/dash_navigation_screen.dart';
 import 'package:flutter_application_1/feature/dashboard/presentation/dash_rom_screen.dart';
@@ -15,11 +9,17 @@ import 'package:flutter_application_1/feature/financeiro/view/pages/fatura_list_
 import 'package:flutter_application_1/feature/financeiro/view/pages/fatura_navigation.dart';
 import 'package:flutter_application_1/feature/incidente/presentation/screen/incidente_detail_screen.dart';
 import 'package:flutter_application_1/feature/incidente/presentation/screen/incidente_nav_screen.dart';
+import 'package:flutter_application_1/feature/incidente/presentation/screen/incidente_screen.dart';
 import 'package:flutter_application_1/feature/profile/view/pages/profile_page.dart';
 import 'package:flutter_application_1/feature/romaneio/view/screen/romaneio_detail_screen.dart';
 import 'package:flutter_application_1/feature/romaneio/view/screen/romaneio_list_screen.dart';
 import 'package:flutter_application_1/feature/romaneio/view/screen/romaneio_nav_screen.dart';
 import 'package:flutter_application_1/shared/data/dto/financeiro/financeiro_response.dart';
+import 'package:flutter_application_1/shared/domain/models/doc_model.dart';
+import 'package:flutter_application_1/shared/domain/models/incidente_model.dart';
+import 'package:flutter_application_1/shared/view/guards/params_guard.dart';
+import 'package:flutter_application_1/shared/view/layout/main_layout.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 part 'app.gr.dart';
 
@@ -53,10 +53,11 @@ class AppRouter extends RootStackRouter {
             AutoRoute(path: "detail", page: IncidenteDetailRoute.page),
           ],
         ),
-        AutoRoute(path: "profile", page: ProfileRoute.page),
+        CustomRoute(path: "profile", page: ProfileRoute.page),
         AutoRoute(
           path: "dashboard",
           page: DashNavigationRoute.page,
+
           children: [
             AutoRoute(path: "", page: DashboardRoute.page, initial: true),
             AutoRoute(path: "rom", page: DashRomRoute.page),
