@@ -1,9 +1,25 @@
 {   
  "version": "0.2.0",
- "configurations": [{
-        "name": "Flutter",
+ "configurations": [
+    {
+        "name": "Web",
         "request": "launch",
         "type": "dart",
+        "deviceId": "chrome",
         "args": ["-d", "chrome","--web-port", "5000"],
+    },
+    {
+        "name": "Android",
+        "request": "launch",
+        "type": "dart",
+        "deviceId": "emulator-5554"
+        // "args": ["-d", "chrome","--web-port", "5000"],
+    },
+],
+"compounds": [
+    {
+        "name": "Web+Android",
+        "configurations": ["Android","Web"]
     }
-]}
+]
+}

@@ -81,49 +81,6 @@ class HomeScreen extends ConsumerWidget {
                 },
                 child: const Text("Rom Page"),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                spacing: 15,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      ToastHelper.info("Info message");
-                    },
-                    child: const Text("Info"),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      ToastHelper.error("Error message", id: Uuid().v4());
-                    },
-                    child: const Text("Error"),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      ToastHelper.warn("Warn message", id: Uuid().v4());
-                    },
-                    child: const Text("Warn"),
-                  ),
-
-                  ElevatedButton(
-                    onPressed: () {
-                      ToastHelper.success("Success message");
-                    },
-                    child: const Text("Success"),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      ref.read(painelProvider).close();
-                    },
-                    child: const Text("Close"),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      ref.read(painelProvider).open();
-                    },
-                    child: const Text("Open"),
-                  ),
-                ],
-              ),
             ],
           ),
         ),

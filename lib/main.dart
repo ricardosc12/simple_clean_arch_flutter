@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/observers/auth_observer.dart';
 import 'package:flutter_application_1/feature/auth/controllers/auth_controller.dart';
 import 'package:flutter_application_1/routes/app.dart';
+import 'package:flutter_application_1/shared/log/log_service.dart';
 import 'package:flutter_application_1/shared/view/layout/gesture_detector.dart';
 import 'package:flutter_application_1/shared/view/layout/notify_panel/widget.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

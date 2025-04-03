@@ -27,7 +27,7 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
                 onPressed: () => context.router.back(),
               )
               : null,
-      title: Image.asset("logo.png", width: 130, height: 50),
+      title: Image.asset("assets/images/logo.png", width: 130, height: 50),
       bottom: bottom,
       flexibleSpace: flexibleSpace,
       actions: [
