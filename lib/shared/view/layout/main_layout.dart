@@ -28,11 +28,10 @@ class MainLayoutPage extends StatelessWidget {
           appBar: DefaultAppBar(),
           body: Column(children: [Expanded(child: child)]),
           bottomNavigationBar: BottomNavigationBar(
-            type:
-                BottomNavigationBarType.fixed, // Garante que o layout não mude
-            backgroundColor: Colors.white, // Defina a cor desejada
-            selectedItemColor: Colors.orange, // Cor do item selecionado
-            unselectedItemColor: Colors.grey, // Cor dos itens não selecionados
+            type: BottomNavigationBarType.fixed,
+            backgroundColor: Colors.white,
+            selectedItemColor: Colors.orange,
+            unselectedItemColor: Colors.grey,
             currentIndex: tabsRouter.activeIndex,
             onTap: (index) {
               tabsRouter.setActiveIndex(index);

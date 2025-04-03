@@ -8,12 +8,11 @@ class UserHeader extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.read(authProvider);
+    final state = ref.read(authProvider).valueOrNull;
 
     switch (state) {
       case Logged():
         final user = state.user;
-
         return Row(
           children: [
             Text(user.grupoEmp),

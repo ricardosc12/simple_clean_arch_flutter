@@ -13,7 +13,9 @@ class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool canPop = context.topRoute.path.isNotEmpty;
+    final bool canPop =
+        context.topRoute.path.isNotEmpty &&
+        context.topRoute.parent?.name != "MainLayoutRoute";
 
     return AppBar(
       backgroundColor: const Color(0xFFFF7418),

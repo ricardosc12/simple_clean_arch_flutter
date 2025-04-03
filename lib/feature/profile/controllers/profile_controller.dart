@@ -13,7 +13,7 @@ class Profile extends _$Profile {
 }
 
 // Future Provider
-@Riverpod(keepAlive: false)
+@riverpod
 class ProfileAsync extends _$ProfileAsync {
   @override
   FutureOr<UnionProfileState> build() async {

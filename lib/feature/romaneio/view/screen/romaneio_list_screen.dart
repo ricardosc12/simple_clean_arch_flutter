@@ -1,12 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/feature/romaneio/view/widgets/doc_widget.dart';
 import 'package:flutter_application_1/feature/romaneio/providers/docs_provider.dart';
-import 'package:flutter_application_1/feature/romaneio/providers/docs_state.dart';
+import 'package:flutter_application_1/feature/romaneio/view/widgets/doc_widget.dart';
 import 'package:flutter_application_1/routes/app.dart';
-import 'package:flutter_application_1/shared/view/animations/loading.dart';
-import 'package:flutter_application_1/shared/view/layout/app_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 @RoutePage()
@@ -16,7 +12,8 @@ class RomaneioListScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return RefreshIndicator(
-      onRefresh: ref.read(docsProvider.notifier).syncDocs,
+      // onRefresh: ref.invalidate(docsProvider),
+      onRefresh: () => Future.value(),
       child: Column(
         children: <Widget>[
           Padding(
@@ -45,22 +42,22 @@ class RomaneioListScreen extends ConsumerWidget {
                 Consumer(
                   builder: (_, ref, _) {
                     final docsLength = ref.watch(
-                      docsProvider.select((e) => e.docs.length),
+                      docsProvider.select((e) => e.valueOrNull?.docs.length),
                     );
-                    return Text("Documentos totais: $docsLength");
+                    return Text("Documentos totais: ${docsLength ?? 0}");
                   },
                 ),
               ],
             ),
           ),
 
-          if (ref.watch(docsProvider.select((e) => e.status)) ==
-              DocsStatus.initalLoading)
-            const Expanded(child: Center(child: LoadingProgress(size: 70))),
-
           Expanded(
             child: ListView.builder(
-              itemCount: ref.watch(docsProvider.select((e) => e.docs.length)),
+              itemCount:
+                  ref.watch(
+                    docsProvider.select((e) => e.valueOrNull?.docs.length),
+                  ) ??
+                  0,
               itemBuilder:
                   (_, index) => ProviderScope(
                     overrides: [indexProvider.overrideWith((_) => index)],

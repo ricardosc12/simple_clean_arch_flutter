@@ -43,7 +43,7 @@ class DashboardScreen extends ConsumerWidget {
             child: Paper(
               child: Consumer(
                 builder: (context, ref, child) {
-                  AuthState user = ref.watch(authProvider);
+                  final user = ref.watch(authProvider).valueOrNull;
 
                   if (user is Logged) {
                     return Row(
@@ -57,8 +57,6 @@ class DashboardScreen extends ConsumerWidget {
                         Text(user.user.grupoEmp),
                       ],
                     );
-                  } else if (user is Refreshed) {
-                    return const Text("Usuário Atualizado e Reconhecido");
                   } else if (user is Error) {
                     return const Text("Usuário não autenticado");
                   } else {

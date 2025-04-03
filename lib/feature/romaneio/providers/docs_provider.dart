@@ -1,5 +1,7 @@
 import 'package:faker/faker.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
+import 'package:flutter_application_1/core/exceptions/app_error.dart';
+import 'package:flutter_application_1/core/extensions/riverpod_persistent_extension.dart';
 import 'package:flutter_application_1/feature/romaneio/providers/docs_state.dart';
 import 'package:flutter_application_1/feature/romaneio/repository/doc_repository.dart';
 import 'package:flutter_application_1/shared/domain/dto/doc.dart';
@@ -14,66 +16,75 @@ final indexProvider = Provider<int>((ref) {
 });
 
 @riverpod
+class PendingDocs extends _$PendingDocs {
+  @override
+  FutureOr<DocsState> build() async {
+    return ref.autoPersist(
+      key: "pending_docs",
+      initial: DocsState(docs: IList()),
+      fromJson: DocsState.fromJson,
+      ifSave: (data) => true,
+    );
+  }
+}
+
+@riverpod
 class Docs extends _$Docs {
   late final DocRepository _docRepository;
 
   @override
-  DocsState build() {
+  FutureOr<DocsState> build() async {
     _docRepository = DocRepositoryLocalImpl();
 
-    _fetchDocs().then((docsState) {
-      state = docsState;
-    });
-
-    return DocsState(status: DocsStatus.initalLoading);
-  }
-
-  Future<DocsState> _fetchDocs() async {
     final res = await _docRepository.getDocs();
 
     return res.when(
       (data) {
-        return DocsState(docs: data.lock, status: DocsStatus.loaded);
+        return DocsState(docs: data.lock);
       },
-      (_) {
-        return DocsState(status: DocsStatus.error);
+      (e) {
+        throw AppError(message: "Não foi possível obter documentos!");
       },
     );
-  }
-
-  Future<void> syncDocs() async {
-    state = state.copyWith(status: DocsStatus.loding);
-    state = await _fetchDocs();
   }
 
   void removeDoc({required String ar}) {
-    final index = state.docs.indexWhere((e) => e.ar == ar);
-    if (index == -1) return;
-    state = state.copyWith(docs: state.docs.removeAt(index));
+    final data = state.valueOrNull;
+    final index = data?.docs.indexWhere((e) => e.ar == ar);
+    if (index == -1 || data == null || index == null) return;
+    state = AsyncData(data.copyWith(docs: data.docs.removeAt(index)));
   }
 
   void addDoc({required CreateDocDto doc}) {
-    final doc0 = createExampleDoc(doc);
-    state = state.copyWith(docs: state.docs.insert(0, doc0));
+    state.whenData((data) {
+      final doc0 = createExampleDoc(doc);
+      state = AsyncData(data.copyWith(docs: data.docs.insert(0, doc0)));
+    });
   }
 
   void editDoc({required String ar, required CreateDocDto doc}) {
-    final doc0 = createExampleDoc(doc);
+    state.whenData((data) {
+      final doc0 = createExampleDoc(doc);
 
-    final index = state.docs.indexWhere((d) => d.ar == ar);
+      final index = data.docs.indexWhere((d) => d.ar == ar);
 
-    if (index == -1) return;
+      if (index == -1) return;
 
-    state = state.copyWith(docs: state.docs.replace(index, doc0));
+      state = AsyncData(data.copyWith(docs: data.docs.replace(index, doc0)));
+    });
   }
 
   void pushDoc() {
-    state = state.copyWith(
-      docs: state.docs.replace(
-        0,
-        state.docs[0].copyWith(ar: faker.animal.name()),
-      ),
-    );
+    state.whenData((data) {
+      state = AsyncData(
+        data.copyWith(
+          docs: data.docs.replace(
+            0,
+            data.docs[0].copyWith(ar: faker.animal.name()),
+          ),
+        ),
+      );
+    });
   }
 }
 

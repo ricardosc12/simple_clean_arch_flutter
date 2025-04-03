@@ -17,6 +17,7 @@ import 'package:flutter_application_1/feature/romaneio/view/screen/romaneio_nav_
 import 'package:flutter_application_1/shared/data/dto/financeiro/financeiro_response.dart';
 import 'package:flutter_application_1/shared/domain/models/doc_model.dart';
 import 'package:flutter_application_1/shared/domain/models/incidente_model.dart';
+import 'package:flutter_application_1/shared/view/guards/auth_guard.dart';
 import 'package:flutter_application_1/shared/view/guards/params_guard.dart';
 import 'package:flutter_application_1/shared/view/layout/main_layout.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -38,12 +39,13 @@ class AppRouter extends RootStackRouter {
 
   @override
   List<AutoRoute> get routes => [
-    AutoRoute(page: HomeRoute.page, initial: true, keepHistory: false),
+    AutoRoute(page: HomeRoute.page, keepHistory: false),
     AutoRoute(
       page: MainLayoutRoute.page,
       keepHistory: false,
+      initial: true,
       path: "/app",
-      // guards: [AuthGuard(ref)],
+      guards: [AuthGuard(ref)],
       children: [
         AutoRoute(
           path: "incidente",
@@ -53,7 +55,11 @@ class AppRouter extends RootStackRouter {
             AutoRoute(path: "detail", page: IncidenteDetailRoute.page),
           ],
         ),
-        CustomRoute(path: "profile", page: ProfileRoute.page),
+        CustomRoute(
+          path: "profile",
+          page: ProfileRoute.page,
+          transitionsBuilder: TransitionsBuilders.slideBottom,
+        ),
         AutoRoute(
           path: "dashboard",
           page: DashNavigationRoute.page,

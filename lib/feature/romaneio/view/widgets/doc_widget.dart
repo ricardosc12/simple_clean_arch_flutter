@@ -10,8 +10,12 @@ class DocWidgetWrapper extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     int index = ref.read(indexProvider);
-    Doc doc = ref.watch(docsProvider.select((e) => e.docs[index]));
-    return DocWidget(doc: doc);
+    Doc? doc = ref.watch(
+      docsProvider.select((e) => e.valueOrNull?.docs[index]),
+    );
+    return doc != null
+        ? DocWidget(doc: doc)
+        : const Text("Documento não encontrado!");
   }
 }
 

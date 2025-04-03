@@ -20,10 +20,12 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(authProvider);
 
-    ref.listen(authProvider, (prev, next) {
-      if (next is Logged) {
-        ref.read(routeProvider).navigate(const DashboardRoute());
-      }
+    ref.listen(authProvider, (prev, next) async {
+      next.whenData((user) {
+        if (user is Logged) {
+          ref.read(routeProvider).navigate(const DashboardRoute());
+        }
+      });
     });
 
     return Scaffold(
@@ -63,19 +65,14 @@ class HomeScreen extends ConsumerWidget {
               // ),
               Container(
                 child: () {
-                  switch (state) {
-                    case Logged():
-                      final user = state.user;
-                      return Text("User Logged: $user");
-                    case Error():
-                      return const Text("User error");
-                    case Init():
-                      return const Text("User Init");
-                    case Loading():
-                      return const Text("User Loading");
-                    case Refreshed():
-                      return const Text("User Refreshed");
-                  }
+                  return state.when(
+                    data: (data) {
+                      if (data is Logged) return Text("Logged: ${data.user}");
+                      if (data is Unlogged) return Text("Unlogged");
+                    },
+                    error: (_, _) => const Text("User Error"),
+                    loading: () => const Text("Loading"),
+                  );
                 }(),
               ),
               ElevatedButton(

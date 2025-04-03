@@ -70,6 +70,7 @@ dependencies:
   jiffy: ^6.3.2
   collection: ^1.19.1
   shared_preferences: ^2.5.3
+  flutter_native_splash: ^2.4.5
 
 
 dev_dependencies:

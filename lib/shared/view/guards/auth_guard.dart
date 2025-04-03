@@ -8,11 +8,10 @@ class AuthGuard extends AutoRouteGuard {
   final Ref ref;
 
   AuthGuard(this.ref);
-  
+
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) async {
-    await Future.delayed(Duration(milliseconds: 8000));
-    final state = ref.read(authProvider);
+    final state = await ref.read(authProvider.future);
     if (state is Logged) {
       resolver.next(true);
     } else {
