@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_application_1/feature/auth/view/pages/login_page.dart';
-import 'package:flutter_application_1/feature/dashboard/presentation/dash_navigation_screen.dart';
-import 'package:flutter_application_1/feature/dashboard/presentation/dash_rom_screen.dart';
-import 'package:flutter_application_1/feature/dashboard/presentation/dashboard_screen.dart';
+import 'package:flutter_application_1/feature/dashboard/view/dash_navigation_screen.dart';
+import 'package:flutter_application_1/feature/dashboard/view/dash_rom_screen.dart';
+import 'package:flutter_application_1/feature/dashboard/view/dashboard_screen.dart';
 import 'package:flutter_application_1/feature/financeiro/view/pages/fatura_detail_page.dart';
 import 'package:flutter_application_1/feature/financeiro/view/pages/fatura_list_page.dart';
 import 'package:flutter_application_1/feature/financeiro/view/pages/fatura_navigation.dart';
