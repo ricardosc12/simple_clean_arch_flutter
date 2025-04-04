@@ -249,7 +249,7 @@ class ProfileRoute extends PageRouteInfo<void> {
 /// generated route for
 /// [RomaneioDetailScreen]
 class RomaneioDetailRoute extends PageRouteInfo<RomaneioDetailRouteArgs> {
-  RomaneioDetailRoute({Key? key, Doc? doc, List<PageRouteInfo>? children})
+  RomaneioDetailRoute({Key? key, DocTeste? doc, List<PageRouteInfo>? children})
     : super(
         RomaneioDetailRoute.name,
         args: RomaneioDetailRouteArgs(key: key, doc: doc),
@@ -274,7 +274,7 @@ class RomaneioDetailRouteArgs {
 
   final Key? key;
 
-  final Doc? doc;
+  final DocTeste? doc;
 
   @override
   String toString() {

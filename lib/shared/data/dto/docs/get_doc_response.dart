@@ -1,3 +1,4 @@
+import 'package:flutter_application_1/core/extensions/persistent_state.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter_application_1/shared/utils/enum.dart';
 
@@ -43,15 +44,15 @@ enum TipoDoc with EnumUpperStatus {
 
 @freezed
 abstract class GetDocsResponse with _$GetDocsResponse {
-  factory GetDocsResponse({required List<MobileDoc>? docs}) = _GetDocsResponse;
+  factory GetDocsResponse({required List<Document>? docs}) = _GetDocsResponse;
 
   factory GetDocsResponse.fromJson(Map<String, dynamic> json) =>
       _$GetDocsResponseFromJson(json);
 }
 
 @freezed
-abstract class MobileDoc with _$MobileDoc {
-  const factory MobileDoc({
+abstract class Document with _$Document implements PersistentState {
+  const factory Document({
     required String? ar,
     @JsonKey(unknownEnumValue: TipoDoc.naoInformado) required TipoDoc? tipoDoc,
     required String? chave,
@@ -69,10 +70,10 @@ abstract class MobileDoc with _$MobileDoc {
     required Grupo? grupo,
     required String? volumes,
     required Dest? dest,
-  }) = _MobileDoc;
+  }) = _Document;
 
-  factory MobileDoc.fromJson(Map<String, dynamic> json) =>
-      _$MobileDocFromJson(json);
+  factory Document.fromJson(Map<String, dynamic> json) =>
+      _$DocumentFromJson(json);
 }
 
 @freezed

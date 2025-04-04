@@ -8,7 +8,7 @@ part 'docs_state.g.dart';
 
 @freezed
 abstract class DocsState with _$DocsState implements PersistentState {
-  const factory DocsState({@Default(IList.empty()) IList<Doc> docs}) =
+  const factory DocsState({@Default(IList.empty()) IList<DocTeste> docs}) =
       _DocsState;
 
   factory DocsState.fromJson(Map<String, dynamic> json) =>

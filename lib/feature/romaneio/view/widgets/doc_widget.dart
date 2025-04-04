@@ -10,7 +10,7 @@ class DocWidgetWrapper extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     int index = ref.read(indexProvider);
-    Doc? doc = ref.watch(
+    DocTeste? doc = ref.watch(
       docsProvider.select((e) => e.valueOrNull?.docs[index]),
     );
     return doc != null
@@ -20,7 +20,7 @@ class DocWidgetWrapper extends ConsumerWidget {
 }
 
 class DocWidget extends ConsumerWidget {
-  final Doc doc;
+  final DocTeste doc;
 
   const DocWidget({super.key, required this.doc});
 

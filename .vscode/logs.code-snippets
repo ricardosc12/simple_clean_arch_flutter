@@ -1,0 +1,9 @@
+{
+    "log_info": {
+        "prefix": "lgi",
+        "body": [
+            "LogService.logger.info(\"$1\");"
+        ],
+        "description": ""
+    }
+}

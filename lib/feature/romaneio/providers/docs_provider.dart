@@ -88,8 +88,8 @@ class Docs extends _$Docs {
   }
 }
 
-Doc createExampleDoc(CreateDocDto docDto) {
-  return Doc(
+DocTeste createExampleDoc(CreateDocDto docDto) {
+  return DocTeste(
     ar: faker.randomGenerator.fromCharSet("0123456789", 15),
     chave: faker.randomGenerator.fromCharSet("0123456789", 15),
     numero: faker.randomGenerator.fromCharSet("0123456789", 8),

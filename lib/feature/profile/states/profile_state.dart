@@ -1,3 +1,4 @@
+import 'package:flutter_application_1/core/extensions/persistent_state.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'profile_state.freezed.dart';
@@ -18,8 +19,8 @@ sealed class UnionProfileState with _$UnionProfileState {
       _$UnionProfileStateFromJson(json);
 }
 
-@freezed
-abstract class ProfileState with _$ProfileState {
+@Freezed(toJson: true)
+abstract class ProfileState with _$ProfileState implements PersistentState {
   const factory ProfileState({required String data}) = _ProfileState;
 
   factory ProfileState.fromJson(Map<String, dynamic> json) =>

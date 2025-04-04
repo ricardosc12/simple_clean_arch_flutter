@@ -11,7 +11,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 @RoutePage()
 class RomaneioDetailScreen extends ConsumerWidget {
-  final Doc? doc;
+  final DocTeste? doc;
 
   const RomaneioDetailScreen({super.key, this.doc});
 

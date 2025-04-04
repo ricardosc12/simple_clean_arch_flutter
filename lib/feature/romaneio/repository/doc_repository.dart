@@ -4,16 +4,16 @@ import 'package:flutter_application_1/shared/domain/models/romaneio_model.dart';
 import 'package:multiple_result/multiple_result.dart';
 
 abstract class DocRepository {
-  Future<Result<List<Doc>, Exception>> getDocs();
+  Future<Result<List<DocTeste>, Exception>> getDocs();
 }
 
 class DocRepositoryLocalImpl implements DocRepository {
   @override
-  Future<Result<List<Doc>, Exception>> getDocs() async {
+  Future<Result<List<DocTeste>, Exception>> getDocs() async {
 
     await Future.delayed(Duration(milliseconds: 1000));
     final romTipos = RomaneioTipo.values;
-    final docStatus = DocStatus.values;
+    final docStatus = DocTesteStatus.values;
 
     List<String> remetentes = List.generate(8, (_) => faker.person.name());
     List<String> destinatarios = List.generate(6, (_) => faker.person.name());
@@ -27,11 +27,11 @@ class DocRepositoryLocalImpl implements DocRepository {
       ),
     );
 
-    List<Doc> docs = [];
+    List<DocTeste> docs = [];
 
     for (var i = 0; i < 50; i++) {
       docs.add(
-        Doc(
+        DocTeste(
           ar: faker.randomGenerator.fromCharSet("1234567890", 15),
           chave: faker.randomGenerator.fromCharSet("1234567890", 15),
           destinatario: faker.randomGenerator.element(remetentes),

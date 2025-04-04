@@ -15,7 +15,7 @@ abstract class DocSchema {
     DocFields.status: l
         .string()
         .regex(
-          FormValidations.inEnum(DocStatus.values),
+          FormValidations.inEnum(DocTesteStatus.values),
           message: "Status incorreto",
         )
         .required(message: "Status obrigatório"),

@@ -26,21 +26,45 @@ enum DocStatus with EnumUpperStatus {
   final String itemLabel;
 
   @override
-  String toJson() => _$DocStatusEnumMap[this] ?? name.toUpperCase();
+  String toJson() => _$DocTesteStatusEnumMap[this] ?? name.toUpperCase();
+}
+
+@JsonEnum(alwaysCreate: true)
+enum DocTesteStatus with EnumUpperStatus {
+  @JsonValue("APP")
+  app("App"),
+  @JsonValue("COLETA")
+  coleta("Coleta"),
+  @JsonValue("ENTREGA")
+  entrega("Entrega"),
+  @JsonValue("REDESPACHO")
+  redespacho("Redespacho"),
+  @JsonValue("TRANSBORDO")
+  transbordo("Transbordo"),
+  @JsonValue("TRANSFERENCIA")
+  transferencia("Transferência");
+
+  const DocTesteStatus(this.itemLabel);
+
+  @override
+  final String itemLabel;
+
+  @override
+  String toJson() => _$DocTesteStatusEnumMap[this] ?? name.toUpperCase();
 }
 
 @freezed
-abstract class Doc with _$Doc {
-  const factory Doc({
+abstract class DocTeste with _$DocTeste {
+  const factory DocTeste({
     required String ar,
     required String chave,
     required String numero,
-    required DocStatus status,
+    required DocTesteStatus status,
     required Romaneio romaneio,
     required String destinatario,
     required String remetente,
     int? volumes,
-  }) = _Doc;
+  }) = _DocTeste;
 
-  factory Doc.fromJson(Map<String, dynamic> json) => _$DocFromJson(json);
+  factory DocTeste.fromJson(Map<String, dynamic> json) => _$DocTesteFromJson(json);
 }

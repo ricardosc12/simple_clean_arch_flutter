@@ -6,7 +6,6 @@ import 'package:flutter_application_1/feature/auth/states/auth_state.dart';
 import 'package:flutter_application_1/feature/auth/view/widgets/user_form.dart';
 import 'package:flutter_application_1/routes/app.dart';
 import 'package:flutter_application_1/shared/view/form_controller.dart';
-import 'package:flutter_application_1/shared/view/layout/notify_panel/providers.dart';
 import 'package:flutter_application_1/shared/view/layout/paper.dart';
 import 'package:flutter_application_1/shared/view/layout/toast.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -50,24 +49,15 @@ class HomeScreen extends ConsumerWidget {
                         },
                     },
               ),
-              // ProviderScope(
-              //   overrides: [formUserProvider, authProvider],
-              //   child: Consumer(
-              //     builder: (context, ref, child) {
-              //       return Column(
-              //         children: [
-              //           UserForm(userForm: ref.watch(formUserProvider)),
-              //           StateForm(),
-              //         ],
-              //       );
-              //     },
-              //   ),
-              // ),
               Container(
                 child: () {
                   return state.when(
                     data: (data) {
-                      if (data is Logged) return Text("Logged: ${data.user}");
+                      if (data is Logged) {
+                        return Text(
+                          "Logged: ${data.user.name ?? "Nome desconhecido"}",
+                        );
+                      }
                       if (data is Unlogged) return Text("Unlogged");
                     },
                     error: (_, _) => const Text("User Error"),

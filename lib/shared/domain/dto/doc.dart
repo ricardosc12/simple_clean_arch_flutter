@@ -8,7 +8,7 @@ part 'doc.g.dart';
 abstract class CreateDocDto with _$CreateDocDto {
   @JsonSerializable(fieldRename: FieldRename.snake)
   factory CreateDocDto({
-    required DocStatus status,
+    required DocTesteStatus status,
     required String destinatario,
     required String remetente,
   }) = _CreateDocDto;

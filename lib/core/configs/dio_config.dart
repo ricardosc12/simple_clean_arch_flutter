@@ -27,6 +27,15 @@ Dio createDioConfig({required String baseUrl}) {
       ),
     ),
   );
+  dio.interceptors.add(
+    InterceptorsWrapper(
+      onError: (DioException error, ErrorInterceptorHandler handler) {
+        LogService.logger.error(error);
+
+        return handler.next(error);
+      },
+    ),
+  );
 
   // DioForBrowser dio = DioForBrowser(options);
 

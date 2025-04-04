@@ -16,7 +16,7 @@ DocsRepository docsRepository(Ref ref) {
 }
 
 abstract class DocsRepository {
-  Future<Result<IList<MobileDoc>, AppError>> getDocs(GetDocsParam params);
+  Future<Result<IList<Document>, AppError>> getDocs(GetDocsParam params);
 }
 
 class DocRepositoryRemoteImpl implements DocsRepository {
@@ -25,7 +25,7 @@ class DocRepositoryRemoteImpl implements DocsRepository {
   const DocRepositoryRemoteImpl(this._docsApi);
 
   @override
-  Future<Result<IList<MobileDoc>, AppError>> getDocs(
+  Future<Result<IList<Document>, AppError>> getDocs(
     GetDocsParam params,
   ) async {
     final res = await _docsApi.getDocs(params);
@@ -43,7 +43,7 @@ class DocRepositoryRemoteImpl implements DocsRepository {
 
 class DocRepositoryLocalImpl implements DocsRepository {
   @override
-  Future<Result<IList<MobileDoc>, AppError>> getDocs(GetDocsParam params) {
+  Future<Result<IList<Document>, AppError>> getDocs(GetDocsParam params) {
     // TODO: implement getDocs
     throw UnimplementedError();
   }
