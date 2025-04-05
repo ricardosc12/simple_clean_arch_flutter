@@ -45,7 +45,7 @@ class CacheStoreImpl<T> implements CacheStore<T> {
   Future<void> setData(T data) async {
     try {
       final json = toJson(data);
-      LogService.logger.info("setting cache info: $json");
+      LogService.logger.info("setting cache info: $_key:: $json");
       await (await box).put(_key, json);
     } catch (e, s) {
       LogService.logger.error("set cache error $_key", e, s);
@@ -57,7 +57,7 @@ class CacheStoreImpl<T> implements CacheStore<T> {
     try {
       final cached =
           (await box).get(_key, defaultValue: <dynamic, dynamic>{})?.cast<String, dynamic>();
-      LogService.logger.info("get cache info: $cached");
+      LogService.logger.info("get cache info: $_key: $cached");
       if (cached != null && cached.isNotEmpty) {
         return fromJson(cached);
       }

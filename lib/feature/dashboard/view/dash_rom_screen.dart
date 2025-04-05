@@ -28,7 +28,7 @@ class DocumentsList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(documentsCachedProvider);
-    final profile = ref.watch(cachedProfileProvider);
+    final profile = ref.watch(profileCachedProvider);
     return state.when(
       skipLoadingOnReload: true,
       data: (data) {
@@ -37,8 +37,12 @@ class DocumentsList extends ConsumerWidget {
             Text("Documents: ${data.length}"),
             Text("Profile: $profile"),
             ElevatedButton(
-              onPressed: () => ref.invalidate(cachedProfileProvider),
+              onPressed: () => ref.read(profileCachedProvider.notifier).changeState(),
               child: const Text("Profile"),
+            ),
+                  ElevatedButton(
+              onPressed: () => ref.invalidate(profileCachedProvider),
+              child: const Text("Invalidate Profile"),
             ),
             Expanded(
               child: ListView.builder(
